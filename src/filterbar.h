@@ -22,8 +22,6 @@
 
 #include <QtGui/QWidget>
 
-class QLabel;
-class QToolButton;
 class KLineEdit;
 
 /**
@@ -61,9 +59,7 @@ protected:
     virtual void keyReleaseEvent(QKeyEvent* event);
 
 private:
-    QLabel* m_filter;
     KLineEdit* m_filterInput;
-    QToolButton* m_close;
 };
 
 #endif
