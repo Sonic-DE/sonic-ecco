@@ -52,6 +52,9 @@ protected:
     /** @see QWidget::showEvent() */
     virtual void showEvent(QShowEvent* event);
 
+    /** @see QWidget::contextMenuEvent() */
+    virtual void contextMenuEvent(QContextMenuEvent* event);
+
 private slots:
     void slotSetUrlStatFinished(KJob*);
     void slotQueryTermChanged(const Nepomuk::Query::Term& term);
