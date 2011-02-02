@@ -52,6 +52,9 @@ protected:
     /** @see QWidget::showEvent() */
     virtual void showEvent(QShowEvent* event);
 
+    /** @see QWidget::hideEvent() */
+    virtual void hideEvent(QHideEvent* event);
+
     /** @see QWidget::contextMenuEvent() */
     virtual void contextMenuEvent(QContextMenuEvent* event);
 
@@ -64,7 +67,6 @@ private:
 
 private:
     bool m_initialized;
-    bool m_nepomukEnabled;
     KJob* m_lastSetUrlStatJob;
 
     KUrl m_startedFromDir;
