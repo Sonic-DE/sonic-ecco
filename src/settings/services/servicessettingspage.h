@@ -26,7 +26,7 @@
 
 class QCheckBox;
 class QGroupBox;
-class QListWidget;
+class QListView;
 
 /**
  * @brief Page for the 'Services' settings of the Dolphin settings dialog.
@@ -54,6 +54,7 @@ private slots:
      */
     void loadServices();
 
+private:
     /**
      * Loads installed version control systems.
      */
@@ -63,7 +64,7 @@ private slots:
 
 private:
     bool m_initialized;
-    QListWidget* m_servicesList;
+    QListView *m_listView;
     QGroupBox* m_vcsGroupBox;
     QMap<QString, QCheckBox*> m_vcsPluginsMap;
     QStringList m_enabledVcsPlugins;
