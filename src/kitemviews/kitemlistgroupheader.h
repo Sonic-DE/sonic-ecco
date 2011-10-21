@@ -22,7 +22,9 @@
 
 #include <libdolphin_export.h>
 
+#include <QByteArray>
 #include <QGraphicsWidget>
+#include <QVariant>
 
 class KItemListView;
 
@@ -34,11 +36,23 @@ public:
     KItemListGroupHeader(QGraphicsWidget* parent = 0);
     virtual ~KItemListGroupHeader();
 
-    void setIndex(int index);
-    int index() const;
+    void setRole(const QByteArray& role);
+    QByteArray role() const;
+
+    void setData(const QVariant& data);
+    QVariant data() const;
 
     virtual QSizeF sizeHint(Qt::SizeHint which = Qt::PreferredSize, const QSizeF& constraint = QSizeF()) const;
     virtual void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0);
+
+protected:
+    virtual void roleChanged(const QByteArray& current, const QByteArray& previous);
+    virtual void dataChanged(const QVariant& current, const QVariant& previous);
+
+private:
+    QByteArray m_role;
+    QVariant m_data;
+
 };
 #endif
 
