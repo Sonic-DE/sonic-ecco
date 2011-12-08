@@ -21,6 +21,7 @@
 #define VIEWSETTINGSTAB_H
 
 #include <QWidget>
+#include <settings/viewmodes/viewmodesettings.h>
 
 class DolphinFontRequester;
 class KComboBox;
@@ -52,6 +53,8 @@ signals:
 
 private:
     void loadSettings();
+
+    ViewModeSettings::ViewMode viewMode() const;
 
 private:
     Mode m_mode;
