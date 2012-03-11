@@ -20,29 +20,28 @@
 #ifndef ADDITIONALINFODIALOG_H
 #define ADDITIONALINFODIALOG_H
 
-#include <views/dolphinview.h>
 #include <KDialog>
 #include <QList>
 
 class QCheckBox;
 
 /**
- * @brief Dialog for changing the additional information properties of a directory.
+ * @brief Dialog for changing the additional information shown in the view.
  */
 class AdditionalInfoDialog : public KDialog
 {
     Q_OBJECT
 
 public:
-    AdditionalInfoDialog(QWidget* parent, const QList<DolphinView::AdditionalInfo>& infoList);
+    AdditionalInfoDialog(QWidget* parent, const QList<QByteArray>& visibleRoles);
     virtual ~AdditionalInfoDialog();
-    QList<DolphinView::AdditionalInfo> informationList() const;
+    QList<QByteArray> visibleRoles() const;
 
 private slots:
     void slotOk();
 
 private:
-    QList<DolphinView::AdditionalInfo> m_infoList;
+    QList<QByteArray> m_visibleRoles;
     QList<QCheckBox*> m_checkBoxes;
 };
 
