@@ -36,7 +36,7 @@ class LIBDOLPHINPRIVATE_EXPORT DolphinFileItemListWidget : public KFileItemListW
     Q_OBJECT
 
 public:
-    DolphinFileItemListWidget(QGraphicsItem* parent);
+    DolphinFileItemListWidget(KItemListWidgetInformant* informant, QGraphicsItem* parent);
     virtual ~DolphinFileItemListWidget();
 
 protected:

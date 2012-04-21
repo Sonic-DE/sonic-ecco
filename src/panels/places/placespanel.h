@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2008 by Peter Penz <peter.penz19@gmail.com>             *
+ *   Copyright (C) 2008-2012 by Peter Penz <peter.penz19@gmail.com>        *
  *   Copyright (C) 2010 by Christian Muehlhaeuser <muesli@gmail.com>       *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,12 +21,15 @@
 #ifndef PLACESPANEL_H
 #define PLACESPANEL_H
 
-#include <kfileplacesview.h>
+#include <panels/panel.h>
+
+class KItemListController;
+class KStandardItemModel;
 
 /**
  * @brief Combines bookmarks and mounted devices as list.
  */
-class PlacesPanel : public KFilePlacesView
+class PlacesPanel : public Panel
 {
     Q_OBJECT
 
@@ -34,18 +37,16 @@ public:
     PlacesPanel(QWidget* parent);
     virtual ~PlacesPanel();
 
-signals:
-    void urlChanged(const KUrl& url, Qt::MouseButtons buttons);
-
 protected:
-    virtual void mousePressEvent(QMouseEvent* event);
+    virtual bool urlChanged();
+    virtual void showEvent(QShowEvent* event);
 
 private slots:
     void slotUrlsDropped(const KUrl& dest, QDropEvent* event, QWidget* parent);
-    void emitExtendedUrlChangedSignal(const KUrl& url);
 
 private:
-    Qt::MouseButtons m_mouseButtons;
+    KItemListController* m_controller;
+    KStandardItemModel* m_model;
 };
 
 #endif // PLACESPANEL_H
