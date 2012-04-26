@@ -54,6 +54,12 @@ private slots:
     void slotItemContextMenuRequested(int index, const QPointF& pos);
     void slotViewContextMenuRequested(const QPointF& pos);
     void slotUrlsDropped(const KUrl& dest, QDropEvent* event, QWidget* parent);
+    void slotTrashUpdated(KJob* job);
+
+private:
+    void emptyTrash();
+    void addEntry();
+    void editEntry(int index);
 
 private:
     KItemListController* m_controller;
