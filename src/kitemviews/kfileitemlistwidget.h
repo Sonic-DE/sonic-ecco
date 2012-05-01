@@ -46,6 +46,7 @@ public:
 
 protected:
     virtual bool isRoleRightAligned(const QByteArray& role) const;
+    virtual bool isHidden() const;
 };
 
 #endif
