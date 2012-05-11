@@ -29,6 +29,7 @@
 #include <Solid/StorageVolume>
 
 class KBookmark;
+class PlacesItemStorageAccessListener;
 
 /**
  * @brief Extends KStandardItem by places-specific properties.
@@ -46,6 +47,9 @@ public:
     void setUrl(const KUrl& url);
     KUrl url() const;
 
+    void setUdi(const QString& udi);
+    QString udi() const;
+
     void setHidden(bool hidden);
     bool isHidden() const;
 
@@ -54,11 +58,20 @@ public:
 private:
     void initializeDevice(const QString& udi);
 
+    /**
+     * Is invoked by m_accessListener if the accessibility
+     * of the storage access m_access has been changed.
+     */
+    void onAccessibilityChanged();
+
 private:
     Solid::Device m_device;
     QPointer<Solid::StorageAccess> m_access;
     QPointer<Solid::StorageVolume> m_volume;
     QPointer<Solid::OpticalDisc> m_disc;
+    PlacesItemStorageAccessListener* m_accessListener;
+
+    friend class PlacesItemStorageAccessListener; // Calls onAccessibilityChanged()
 };
 
 #endif
