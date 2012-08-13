@@ -35,4 +35,9 @@ bool PlacesItemListWidget::isHidden() const
     return data().value("isHidden").toBool();
 }
 
+QPalette::ColorRole PlacesItemListWidget::normalTextColorPalette() const
+{
+    return QPalette::WindowText;
+}
+
 #include "placesitemlistwidget.moc"
