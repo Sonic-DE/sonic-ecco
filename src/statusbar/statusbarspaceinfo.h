@@ -31,6 +31,8 @@
 class QHideEvent;
 class QShowEvent;
 
+class SpaceInfoObserver;
+
 /**
  * @short Shows the available space for the volume represented
  *        by the given URL as part of the status bar.
@@ -51,15 +53,11 @@ protected:
     void hideEvent(QHideEvent* event);
 
 private slots:
-    /**
-     * Calculates the space information for the current set URL.
-     */
-    void calculateSpaceInfo();
+    void slotValuesChanged();
 
 private:
-    quint64 m_kBSize;
+    QScopedPointer<SpaceInfoObserver> m_observer;
     KUrl m_url;
-    QTimer* m_timer;
 };
 
 #endif
