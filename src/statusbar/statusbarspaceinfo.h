@@ -27,6 +27,7 @@
 
 class QHideEvent;
 class QShowEvent;
+class QMouseEvent;
 
 class SpaceInfoObserver;
 
@@ -48,6 +49,7 @@ public:
 protected:
     void showEvent(QShowEvent* event) Q_DECL_OVERRIDE;
     void hideEvent(QHideEvent* event) Q_DECL_OVERRIDE;
+    void mousePressEvent(QMouseEvent* event) Q_DECL_OVERRIDE;
 
 private slots:
     void slotValuesChanged();
