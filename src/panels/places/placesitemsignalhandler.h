@@ -56,11 +56,6 @@ public slots:
      */
     void onAccessibilityChanged();
 
-    /**
-     * Calls PlacesItem::onTrashDirListerCompleted()
-     */
-    void onTrashDirListerCompleted();
-
     void onTearDownRequested(const QString& udi);
 
 signals:
