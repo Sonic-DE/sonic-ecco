@@ -24,17 +24,24 @@
 #include <QProgressBar>
 #include <QSlider>
 #include <QStyleOption>
+#include <QTextDocumentFragment>
 #include <QTimer>
 #include <QToolButton>
 
+#include <chrono>
+
+using namespace std::chrono_literals;
+
 namespace
 {
-const int UpdateDelay = 50;
+constexpr std::chrono::milliseconds minimumTimeBetweenTextChanges = 50ms;
+constexpr std::chrono::seconds temporaryRichTextTimeout = 1s;
 }
 
 DolphinStatusBar::DolphinStatusBar(QWidget *parent)
     : AnimatedHeightWidget(parent)
-    , m_text()
+    , m_temporaryRichText()
+    , m_hoveredItemText()
     , m_defaultText()
     , m_label(nullptr)
     , m_zoomLabel(nullptr)
@@ -44,8 +51,8 @@ DolphinStatusBar::DolphinStatusBar(QWidget *parent)
     , m_stopButton(nullptr)
     , m_progress(100)
     , m_showProgressBarTimer(nullptr)
-    , m_delayUpdateTimer(nullptr)
-    , m_textTimestamp()
+    , m_clearTemporaryRichTextTimer(nullptr)
+    , m_updateLabelTextTimer(nullptr)
 {
     setProperty("_breeze_statusbar_separator", true);
 
@@ -53,7 +60,7 @@ DolphinStatusBar::DolphinStatusBar(QWidget *parent)
     contentsContainer->setContentsMargins(0, 0, 0, 0);
 
     // Initialize text label
-    m_label = new KSqueezedTextLabel(m_text, contentsContainer);
+    m_label = new KSqueezedTextLabel{contentsContainer};
     m_label->setTextFormat(Qt::PlainText);
     m_label->setTextInteractionFlags(Qt::TextBrowserInteraction | Qt::TextSelectableByKeyboard); // for accessibility but also to allow copy-pasting this text.
 
@@ -101,11 +108,16 @@ DolphinStatusBar::DolphinStatusBar(QWidget *parent)
     m_showProgressBarTimer->setSingleShot(true);
     connect(m_showProgressBarTimer, &QTimer::timeout, this, &DolphinStatusBar::updateProgressInfo);
 
-    // initialize text updater delay timer
-    m_delayUpdateTimer = new QTimer(this);
-    m_delayUpdateTimer->setInterval(UpdateDelay);
-    m_delayUpdateTimer->setSingleShot(true);
-    connect(m_delayUpdateTimer, &QTimer::timeout, this, &DolphinStatusBar::updateLabelText);
+    // initialize timers for delayed replacing which text is shown
+    m_clearTemporaryRichTextTimer = new QTimer(this);
+    m_clearTemporaryRichTextTimer->setInterval(temporaryRichTextTimeout);
+    m_clearTemporaryRichTextTimer->setSingleShot(true);
+    connect(m_clearTemporaryRichTextTimer, &QTimer::timeout, this, &DolphinStatusBar::clearTemporaryRichText);
+
+    m_updateLabelTextTimer = new QTimer(this);
+    m_updateLabelTextTimer->setInterval(minimumTimeBetweenTextChanges);
+    m_updateLabelTextTimer->setSingleShot(true);
+    connect(m_updateLabelTextTimer, &QTimer::timeout, this, &DolphinStatusBar::updateLabelText);
 
     // Initialize top layout and size policies
     const int fontHeight = QFontMetrics(m_label->font()).height();
@@ -153,24 +165,6 @@ DolphinStatusBar::DolphinStatusBar(QWidget *parent)
 
 DolphinStatusBar::~DolphinStatusBar() = default;
 
-void DolphinStatusBar::setText(const QString &text)
-{
-    if (m_text == text) {
-        return;
-    }
-
-    m_textTimestamp = QTime::currentTime();
-
-    m_text = text;
-    // will update status bar text in 50ms
-    m_delayUpdateTimer->start();
-}
-
-QString DolphinStatusBar::text() const
-{
-    return m_text;
-}
-
 void DolphinStatusBar::showProgress(const QString &currentlyRunningTaskTitle, int progressPercent, CancelLoading cancelLoading)
 {
     m_cancelLoading = cancelLoading;
@@ -215,27 +209,28 @@ int DolphinStatusBar::progress() const
     return m_progress;
 }
 
-void DolphinStatusBar::resetToDefaultText()
+void DolphinStatusBar::setTemporaryRichText(const QString &temporaryRichText)
 {
-    m_text.clear();
-
-    QTime currentTime;
-    if (currentTime.msecsTo(m_textTimestamp) < UpdateDelay) {
-        m_delayUpdateTimer->start();
-    } else {
-        updateLabelText();
+    if (m_temporaryRichText == temporaryRichText) {
+        return;
     }
+
+    m_temporaryRichText = temporaryRichText;
+    updateLabelText(); // Show the text instantly because we only show it temporarily anyway.
+    m_clearTemporaryRichTextTimer->start();
+}
+
+void DolphinStatusBar::setHoveredItemText(const QString &hoveredItemText)
+{
+    m_hoveredItemText = hoveredItemText;
+    m_updateLabelTextTimer->start();
 }
 
 void DolphinStatusBar::setDefaultText(const QString &text)
 {
     m_defaultText = text;
-    updateLabelText();
-}
-
-QString DolphinStatusBar::defaultText() const
-{
-    return m_defaultText;
+    m_hoveredItemText.clear(); // We want to show the new default text instead of whatever was hovered.
+    m_updateLabelTextTimer->start();
 }
 
 void DolphinStatusBar::setUrl(const QUrl &url)
@@ -280,7 +275,9 @@ void DolphinStatusBar::updateWidthToContent()
         QStyleOptionSlider opt;
         opt.initFrom(this);
         opt.orientation = Qt::Vertical;
-        const QSize labelSize = QFontMetrics(font()).size(Qt::TextSingleLine, m_label->fullText());
+        const QSize labelSize = m_label->textFormat() == Qt::PlainText
+            ? QFontMetrics(font()).size(Qt::TextSingleLine, m_label->fullText())
+            : QFontMetrics(font()).size(Qt::TextSingleLine, QTextDocumentFragment::fromHtml(m_label->fullText()).toPlainText());
         // Make sure minimum height takes clipping into account.
         setMinimumHeight(m_label->height() + clippingAmount());
         const int scrollbarWidth = style()->pixelMetric(QStyle::PM_ScrollBarExtent, &opt, this);
@@ -389,10 +386,26 @@ void DolphinStatusBar::updateProgressInfo()
     updateWidthToContent();
 }
 
+void DolphinStatusBar::clearTemporaryRichText()
+{
+    if (m_clearTemporaryRichTextTimer->isActive()) {
+        return;
+    }
+    m_temporaryRichText.clear();
+    m_updateLabelTextTimer->start();
+}
+
 void DolphinStatusBar::updateLabelText()
 {
-    const QString text = m_text.isEmpty() ? m_defaultText : m_text;
-    m_label->setText(text);
+    if (!m_temporaryRichText.isEmpty()) {
+        m_label->setTextFormat(Qt::RichText);
+        m_label->setTextElideMode(Qt::ElideNone);
+        m_label->setText(m_temporaryRichText);
+    } else {
+        m_label->setTextFormat(Qt::PlainText);
+        m_label->setTextElideMode(Qt::ElideMiddle);
+        m_label->setText(m_hoveredItemText.isEmpty() ? m_defaultText : m_hoveredItemText);
+    }
     updateWidthToContent();
 }
 

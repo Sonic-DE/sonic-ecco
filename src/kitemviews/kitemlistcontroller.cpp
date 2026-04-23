@@ -547,6 +547,7 @@ void KItemListController::slotChangeCurrentItem(const QString &text, bool search
         m_view->scrollToItem(index, KItemListView::ViewItemPosition::Beginning);
         *found = true;
     }
+    Q_EMIT typeAheadUsed(text, index >= 0 ? std::make_optional<int>(index) : std::nullopt);
 }
 
 void KItemListController::slotAutoActivationTimeout()
