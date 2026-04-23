@@ -635,6 +635,11 @@ Q_SIGNALS:
     void operationCompletedMessage(const QString &msg);
 
     /**
+     * Is emitted so the \a typeAheadFeedback is displayed to the user. Beware: \a typeAheadFeedback is HTML-escaped rich text.
+     */
+    void showTypeAheadFeedback(const QString &typeAheadFeedback);
+
+    /**
      * Is emitted after DolphinView::setUrl() has been invoked and
      * the current directory is loaded. If this signal is emitted,
      * it is assured that the view contains already the correct root
