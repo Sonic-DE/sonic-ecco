@@ -11,8 +11,6 @@
 
 #include <KMessageWidget>
 
-#include <QTime>
-
 class QUrl;
 class StatusBarSpaceInfo;
 class QLabel;
@@ -37,8 +35,6 @@ public:
     explicit DolphinStatusBar(QWidget *parent);
     ~DolphinStatusBar() override;
 
-    QString text() const;
-
     enum class CancelLoading {
         Allowed,
         Disallowed
@@ -62,18 +58,21 @@ public:
     int progress() const;
 
     /**
-     * Replaces the text set by setText() by the text that
-     * has been set by setDefaultText(). DolphinStatusBar::text()
-     * will return an empty string after the reset has been done.
+     * Sets a text that is shown with priority as a Qt::RichText for a short amount of time.
      */
-    void resetToDefaultText();
-
+    void setTemporaryRichText(const QString &temporaryRichText);
     /**
-     * Sets the default text, which is shown if the status bar
-     * is rest by DolphinStatusBar::resetToDefaultText().
+     * Sets a text describing the hovered item. This text is immediately shown if no m_temporaryRichText is currently shown.
+     * When no item is hovered, call this method with an empty string so the m_defaultText is shown.
+     * @see setTemporaryRichText()
+     * @see setDefaultText()
+     */
+    void setHoveredItemText(const QString &hoveredItemText);
+    /**
+     * Sets the default text. This text is immediately shown if no m_temporaryRichText is currently shown.
+     * @see setTemporaryRichText()
      */
     void setDefaultText(const QString &text);
-    QString defaultText() const;
 
     QUrl url() const;
     int zoomLevel() const;
@@ -105,7 +104,6 @@ public:
     int clippingAmount() const;
 
 public Q_SLOTS:
-    void setText(const QString &text);
     void setUrl(const QUrl &url);
     void setZoomLevel(int zoomLevel);
 
@@ -147,6 +145,12 @@ private Q_SLOTS:
     void updateProgressInfo();
 
     /**
+     * Replaces the text set by setTemporaryRichText() by the text set by setHoveredItemText() or setDefaultText().
+     * Is only called when m_clearTemporaryRichTextTimer times out.
+     */
+    void clearTemporaryRichText();
+
+    /**
      * Updates the text for m_label and does an eliding in
      * case if the text does not fit into the available width.
      */
@@ -173,7 +177,11 @@ private:
     int preferredHeight() const override;
 
 private:
-    QString m_text;
+    /** @see setTemporaryRichText() */
+    QString m_temporaryRichText;
+    /** @see setHoveredItemText() */
+    QString m_hoveredItemText;
+    /** @see setDefaultText() */
     QString m_defaultText;
     KSqueezedTextLabel *m_label;
     QLabel *m_zoomLabel;
@@ -188,8 +196,10 @@ private:
     int m_progress;
     QTimer *m_showProgressBarTimer;
 
-    QTimer *m_delayUpdateTimer;
-    QTime m_textTimestamp;
+    /** Clears the temporary rich text from the status bar and shows a non-temporary text instead. */
+    QTimer *m_clearTemporaryRichTextTimer;
+    /** Very frequent updates to the status bar text look ugly. Most updates go through this timer to avoid this. */
+    QTimer *m_updateLabelTextTimer;
 
     QHBoxLayout *m_topLayout;
 };

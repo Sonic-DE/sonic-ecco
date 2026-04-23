@@ -190,6 +190,13 @@ Q_SIGNALS:
     void aboveItemDropEvent(int index, QGraphicsSceneDragDropEvent *event);
 
     /**
+     * Emits the keys the user typed for searching so they can be displayed back to the user.
+     * @param typedString   A string of basic interpretation of key presses e.g. "qwert".
+     * @param foundIndex    The index of the item that was marked as current in response to this search.
+     */
+    void typeAheadUsed(const QString &typedString, std::optional<int> foundIndex);
+
+    /**
      * Is emitted if the Escape key is pressed.
      */
     void escapePressed();

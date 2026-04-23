@@ -149,10 +149,10 @@ DolphinViewContainer::DolphinViewContainer(const QUrl &url, QWidget *parent)
     m_statusBar->setZoomLevel(m_view->zoomLevel());
     connect(m_view, &DolphinView::urlChanged, m_statusBar, &DolphinStatusBar::setUrl);
     connect(m_view, &DolphinView::zoomLevelChanged, m_statusBar, &DolphinStatusBar::setZoomLevel);
-    connect(m_view, &DolphinView::infoMessage, m_statusBar, &DolphinStatusBar::setText);
-    connect(m_view, &DolphinView::operationCompletedMessage, m_statusBar, &DolphinStatusBar::setText);
+    connect(m_view, &DolphinView::infoMessage, m_statusBar, &DolphinStatusBar::setTemporaryRichText);
+    connect(m_view, &DolphinView::operationCompletedMessage, m_statusBar, &DolphinStatusBar::setTemporaryRichText);
+    connect(m_view, &DolphinView::showTypeAheadFeedback, m_statusBar, &DolphinStatusBar::setTemporaryRichText);
     connect(m_view, &DolphinView::statusBarTextChanged, m_statusBar, &DolphinStatusBar::setDefaultText);
-    connect(m_view, &DolphinView::statusBarTextChanged, m_statusBar, &DolphinStatusBar::resetToDefaultText);
     connect(m_view, &DolphinView::directoryLoadingProgress, m_statusBar, [this](int percent) {
         m_statusBar->showProgress(i18nc("@info:progress", "Loading folder…"), percent);
     });
@@ -696,7 +696,7 @@ void DolphinViewContainer::slotDirectoryLoadingCompleted()
     if (isSearchUrl(url()) && m_view->itemsCount() == 0) {
         // The dir lister has been completed on a Baloo-URI and no items have been found. Instead
         // of showing the default status bar information ("0 items") a more helpful information is given:
-        m_statusBar->setText(i18nc("@info:status", "No items found."));
+        m_statusBar->setDefaultText(i18nc("@info:status", "No items found."));
     } else {
         updateStatusBar();
     }
@@ -720,7 +720,6 @@ void DolphinViewContainer::slotDirectoryLoadingCompleted()
 void DolphinViewContainer::slotDirectoryLoadingCanceled()
 {
     m_statusBar->showProgress(QString(), 100);
-    m_statusBar->setText(QString());
 }
 
 void DolphinViewContainer::slotUrlIsFileError(const QUrl &url)
@@ -839,9 +838,9 @@ void DolphinViewContainer::slotItemsActivated(const KFileItemList &items)
 void DolphinViewContainer::showItemInfo(const KFileItem &item)
 {
     if (item.isNull()) {
-        m_statusBar->resetToDefaultText();
+        m_statusBar->setHoveredItemText(QString());
     } else {
-        m_statusBar->setText(item.getStatusBarInfo());
+        m_statusBar->setHoveredItemText(item.getStatusBarInfo());
     }
 }
 

@@ -130,6 +130,25 @@ DolphinView::DolphinView(const QUrl &url, QWidget *parent)
     KItemListController *controller = new KItemListController(m_model, m_view, this);
     controller->setAutoActivationEnabled(GeneralSettings::autoExpandFolders());
     connect(controller, &KItemListController::doubleClickViewBackground, this, &DolphinView::doubleClickViewBackground);
+    connect(controller, &KItemListController::typeAheadUsed, this, [this](const QString &typedString, std::optional<int> foundIndex) {
+        if (foundIndex.has_value()) {
+            const KFileItem item = m_model->fileItem(foundIndex.value());
+            if (item.isNull()) {
+                return;
+            }
+            const KColorScheme colorScheme = KColorScheme(QPalette::Normal, KColorScheme::Tooltip);
+            const QColor autoCompleteTextColor = colorScheme.foreground(KColorScheme::InactiveText).color();
+
+            Q_EMIT showTypeAheadFeedback(QStringLiteral("%1<font color=\"%2\">%3</font>")
+                                             .arg(typedString.toHtmlEscaped())
+                                             .arg(autoCompleteTextColor.name())
+                                             .arg(item.name().toHtmlEscaped().mid(typedString.size())));
+        } else {
+            const KColorScheme colorScheme = KColorScheme(QPalette::Normal, KColorScheme::Tooltip);
+            const QColor noMatchTextColor = colorScheme.foreground(KColorScheme::NegativeText).color();
+            Q_EMIT showTypeAheadFeedback(QStringLiteral("<font color=\"%1\">%2</font>").arg(noMatchTextColor.name()).arg(typedString.toHtmlEscaped()));
+        }
+    });
 
     // The EnlargeSmallPreviews setting can only be changed after the model
     // has been set in the view by KItemListController.
