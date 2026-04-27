@@ -7,6 +7,7 @@
 
 #include "minimumratingselector.h"
 
+#include "../chip.h"
 #include "../dolphinquery.h"
 
 #include <KLocalizedString>
@@ -17,7 +18,9 @@ MinimumRatingSelector::MinimumRatingSelector(std::shared_ptr<const DolphinQuery>
     : QComboBox{parent}
     , UpdatableStateInterface{dolphinQuery}
 {
-    addItem(/** No icon for the empty state */ i18nc("@item:inlistbox", "Any Rating"), 0);
+    if (!qobject_cast<ChipBase *>(parent)) { // When in a Chip, we don't add the "Any Rating" option because it would unexpectedly remove the Chip.
+        addItem(/* No icon for the empty state */ i18nc("@item:inlistbox", "Any Rating"), 0);
+    }
     addItem(QIcon::fromTheme(QStringLiteral("starred-symbolic")), i18nc("@item:inlistbox", "1 or more"), 2);
     addItem(QIcon::fromTheme(QStringLiteral("starred-symbolic")), i18nc("@item:inlistbox", "2 or more"), 4);
     addItem(QIcon::fromTheme(QStringLiteral("starred-symbolic")), i18nc("@item:inlistbox", "3 or more"), 6);

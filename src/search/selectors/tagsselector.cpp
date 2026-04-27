@@ -7,6 +7,7 @@
 
 #include "tagsselector.h"
 
+#include "../chip.h"
 #include "../dolphinquery.h"
 
 #include <KCoreDirLister>
@@ -146,6 +147,9 @@ void TagsSelector::updateMenu(const std::shared_ptr<const DolphinQuery> &dolphin
         QAction *tagAction = new QAction{QIcon::fromTheme(QStringLiteral("tag")), tag, menu()};
         tagAction->setCheckable(true);
         tagAction->setChecked(dolphinQuery->requiredTags().contains(tag));
+        tagAction->setEnabled(/* When in a Chip, at least one tags needs to stay checked or the Chip will unexepectedly remove itself. */
+                              !tagAction->isChecked() || dolphinQuery->requiredTags().size() != 1 || !qobject_cast<ChipBase *>(parent()));
+
         connect(tagAction, &QAction::triggered, this, [this, tag, onlyOneTagExists](bool checked) {
             QStringList requiredTags = m_searchConfiguration->requiredTags();
             if (checked == requiredTags.contains(tag)) {
@@ -160,11 +164,19 @@ void TagsSelector::updateMenu(const std::shared_ptr<const DolphinQuery> &dolphin
             searchConfigurationCopy.setRequiredTags(requiredTags);
             Q_EMIT configurationChanged(searchConfigurationCopy);
 
+            if (qobject_cast<ChipBase *>(parent())) {
+                auto tagActions = menu()->actions();
+                for (auto tagAction : tagActions) {
+                    tagAction->setEnabled(/* When in a Chip, at least one tags needs to stay checked or the Chip will unexepectedly remove itself. */
+                                          !tagAction->isChecked() || searchConfigurationCopy.requiredTags().size() != 1);
+                }
+            }
             if (!onlyOneTagExists) {
                 // Keep the menu open to allow easier tag multi-selection.
                 menu()->show();
             }
         });
+
         menu()->addAction(tagAction);
     }
     if (menuWasVisible) {

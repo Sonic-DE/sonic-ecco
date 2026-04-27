@@ -6,6 +6,7 @@
 
 #include "dateselector.h"
 
+#include "../chip.h"
 #include "../dolphinquery.h"
 
 #include <KDatePicker>
@@ -19,7 +20,11 @@ Search::DateSelector::DateSelector(std::shared_ptr<const DolphinQuery> dolphinQu
     : QToolButton{parent}
     , UpdatableStateInterface{dolphinQuery}
     , m_datePickerPopup{
-          new KDatePickerPopup{KDatePickerPopup::NoDate | KDatePickerPopup::DatePicker | KDatePickerPopup::Words, dolphinQuery->modifiedSinceDate(), this}}
+          new KDatePickerPopup{/* When in a Chip, we don't add the KDatePickerPopup::NoDate option because it would allow removing the Chip unexpectedly. */
+                               qobject_cast<ChipBase *>(parent) ? KDatePickerPopup::DatePicker | KDatePickerPopup::Words
+                                                                : KDatePickerPopup::NoDate | KDatePickerPopup::DatePicker | KDatePickerPopup::Words,
+                               dolphinQuery->modifiedSinceDate(),
+                               this}}
 {
     setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     setPopupMode(QToolButton::InstantPopup);
