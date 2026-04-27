@@ -6,6 +6,7 @@
 
 #include "filetypeselector.h"
 
+#include "../chip.h"
 #include "../dolphinquery.h"
 
 #include <KFileMetaData/TypeInfo>
@@ -20,7 +21,9 @@ FileTypeSelector::FileTypeSelector(std::shared_ptr<const DolphinQuery> dolphinQu
     for (KFileMetaData::Type::Type type = KFileMetaData::Type::FirstType; type <= KFileMetaData::Type::LastType; type = KFileMetaData::Type::Type(type + 1)) {
         switch (type) {
         case KFileMetaData::Type::Empty:
-            addItem(/** No icon for the empty state */ i18nc("@item:inlistbox", "Any Type"), type);
+            if (!qobject_cast<ChipBase *>(parent)) { // When in a Chip, we don't add the "Any Type" option because it would unexpectedly remove the Chip.
+                addItem(/* No icon for the empty state */ i18nc("@item:inlistbox", "Any Type"), type);
+            }
             continue;
         case KFileMetaData::Type::Archive:
             addItem(QIcon::fromTheme(QStringLiteral("package-x-generic")), KFileMetaData::TypeInfo{type}.displayName(), type);
