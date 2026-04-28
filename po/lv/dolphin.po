@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dolphin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-27 00:46+0000\n"
+"POT-Creation-Date: 2026-04-28 00:48+0000\n"
 "PO-Revision-Date: 2025-11-09 11:07+0200\n"
 "Last-Translator: Toms Trasūns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
@@ -198,7 +198,7 @@ msgstr[0] "Atjaunot uz agrāko vietu"
 msgstr[1] "Atjaunot uz agrākajām vietām"
 msgstr[2] "Atjaunot uz agrākajām vietām"
 
-#: dolphincontextmenu.cpp:236 dolphinmainwindow.cpp:1781
+#: dolphincontextmenu.cpp:236 dolphinmainwindow.cpp:1778
 #, kde-format
 msgctxt "@title:menu Create new folder, file, link, etc."
 msgid "Create New"
@@ -288,7 +288,7 @@ msgid ""
 msgstr "Šajā logā ir atvērtas vairākas cilnes. Vai tiešām vēlaties iziet?"
 
 #: dolphinmainwindow.cpp:651 dolphinmainwindow.cpp:701
-#: views/dolphinview.cpp:2277
+#: views/dolphinview.cpp:2296
 #, kde-format
 msgid "Do not ask again"
 msgstr "Turpmāk nevaicāt"
@@ -319,19 +319,19 @@ msgctxt "@info"
 msgid "Cannot paste: You do not have permission to write into this folder."
 msgstr "Neizdodas ielīmēt — jums nav atļaujas rakstīt šajā mapē."
 
-#: dolphinmainwindow.cpp:1346
+#: dolphinmainwindow.cpp:1343
 #, kde-format
 msgctxt "@action:inmenu Tools"
 msgid "Open %1"
 msgstr "Atvērt %1"
 
-#: dolphinmainwindow.cpp:1355 dolphinmainwindow.cpp:2167
+#: dolphinmainwindow.cpp:1352 dolphinmainwindow.cpp:2164
 #, kde-format
 msgctxt "@action:inmenu Tools"
 msgid "Open Preferred Search Tool"
 msgstr "Atvērt iecienīto meklēšanas rīku"
 
-#: dolphinmainwindow.cpp:1395
+#: dolphinmainwindow.cpp:1392
 #, kde-format
 msgid "Are you sure you want to open 1 terminal window?"
 msgid_plural "Are you sure you want to open %1 terminal windows?"
@@ -339,7 +339,7 @@ msgstr[0] "Vai tiešām vēlaties atvērt %1 termināļa logu?"
 msgstr[1] "Vai tiešām vēlaties atvērt %1 termināļa logus?"
 msgstr[2] "Vai tiešām vēlaties atvērt %1 termināļa logu?"
 
-#: dolphinmainwindow.cpp:1400
+#: dolphinmainwindow.cpp:1397
 #, kde-format
 msgctxt "@action:button"
 msgid "Open %1 Terminal"
@@ -348,7 +348,7 @@ msgstr[0] "Atvērt %1 termināli"
 msgstr[1] "Atvērt %1 termināļus"
 msgstr[2] "Atvērt %1 termināļu"
 
-#: dolphinmainwindow.cpp:1501
+#: dolphinmainwindow.cpp:1498
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -357,7 +357,7 @@ msgid ""
 msgstr ""
 "Nevar izveidot jaunu datni. Jums nav atļauju šajā mapē veidot vienumus."
 
-#: dolphinmainwindow.cpp:1503
+#: dolphinmainwindow.cpp:1500
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -365,25 +365,25 @@ msgid ""
 "folder."
 msgstr "Nevar izveidot jaunu mapi. Jums nav atļauju šajā mapē veidot vienumus."
 
-#: dolphinmainwindow.cpp:1608
+#: dolphinmainwindow.cpp:1605
 #, kde-format
 msgctxt "@action:inmenu menu for configure actions"
 msgid "Configure"
 msgstr "Konfigurēt"
 
-#: dolphinmainwindow.cpp:1790
+#: dolphinmainwindow.cpp:1787
 #, kde-format
 msgctxt "@action:inmenu File"
 msgid "New &Window"
 msgstr "Jauns &logs"
 
-#: dolphinmainwindow.cpp:1791
+#: dolphinmainwindow.cpp:1788
 #, kde-format
 msgctxt "@info"
 msgid "Open a new Dolphin window"
 msgstr "Atvērt jaunu „Dolphin“ logu"
 
-#: dolphinmainwindow.cpp:1793
+#: dolphinmainwindow.cpp:1790
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -393,13 +393,13 @@ msgstr ""
 "Šī darbība atver jaunu logu šajā pašā vietā.<nl/>Varat ievilkt un nomest "
 "vienumus starp logiem."
 
-#: dolphinmainwindow.cpp:1800
+#: dolphinmainwindow.cpp:1797
 #, kde-format
 msgctxt "@action:inmenu File"
 msgid "New Tab"
 msgstr "Jauna cilne"
 
-#: dolphinmainwindow.cpp:1802
+#: dolphinmainwindow.cpp:1799
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -411,31 +411,31 @@ msgstr ""
 ">Cilnes ļauj ātri pārslēgties starp dažādām vietām un skatiem vienā logā. "
 "Varat vilkt un nomest vienumus starp cilnēm."
 
-#: dolphinmainwindow.cpp:1811
+#: dolphinmainwindow.cpp:1808
 #, kde-format
 msgctxt "@action:inmenu Add current folder to places"
 msgid "Add to Places"
 msgstr "Pievienot vietām"
 
-#: dolphinmainwindow.cpp:1813
+#: dolphinmainwindow.cpp:1810
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid "This adds the selected folder to the Places panel."
 msgstr "Šī darbība izvēlēto mapi pievienos panelī pie iecienītākajām vietām."
 
-#: dolphinmainwindow.cpp:1818
+#: dolphinmainwindow.cpp:1815
 #, kde-format
 msgctxt "@action:inmenu File"
 msgid "Close Tab"
 msgstr "Aizvērt cilni"
 
-#: dolphinmainwindow.cpp:1819
+#: dolphinmainwindow.cpp:1816
 #, kde-format
 msgctxt "@info"
 msgid "Close Tab"
 msgstr "Aizvērt cilni"
 
-#: dolphinmainwindow.cpp:1821
+#: dolphinmainwindow.cpp:1818
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -445,13 +445,13 @@ msgstr ""
 "Šī darbība aizver šobrīd atvērto cilni. Ja šī ir pēdējā cilne, tad kopā ar "
 "to aizvērsies viss logs."
 
-#: dolphinmainwindow.cpp:1826
+#: dolphinmainwindow.cpp:1823
 #, kde-format
 msgctxt "@info:whatsthis quit"
 msgid "This closes this window."
 msgstr "Šī darbība aizver šo logu."
 
-#: dolphinmainwindow.cpp:1837
+#: dolphinmainwindow.cpp:1834
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -467,13 +467,13 @@ msgstr ""
 "uzskatāmi novietotas viena otrai blakus: <shortcut>Ctrl+X</shortcut>, "
 "<shortcut>Ctrl+C</shortcut> un <shortcut>Ctrl+V</shortcut>.</para>"
 
-#: dolphinmainwindow.cpp:1844
+#: dolphinmainwindow.cpp:1841
 #, kde-format
 msgctxt "@action"
 msgid "Cut…"
 msgstr "Izgriezt…"
 
-#: dolphinmainwindow.cpp:1846
+#: dolphinmainwindow.cpp:1843
 #, kde-kuit-format
 msgctxt "@info:whatsthis cut"
 msgid ""
@@ -487,13 +487,13 @@ msgstr ""
 "starpliktuves nokopētu jaunā vietā. Pēc šīs darbības vienums tiks aizvākts "
 "no savas sākotnējās atrašanās vietas."
 
-#: dolphinmainwindow.cpp:1853
+#: dolphinmainwindow.cpp:1850
 #, kde-format
 msgctxt "@action"
 msgid "Copy…"
 msgstr "Kopēt…"
 
-#: dolphinmainwindow.cpp:1855
+#: dolphinmainwindow.cpp:1852
 #, kde-kuit-format
 msgctxt "@info:whatsthis copy"
 msgid ""
@@ -505,13 +505,13 @@ msgstr ""
 ">Pēc tam izmantojiet<emphasis>Ielīmēt</emphasis> darbību, lai tās no "
 "starpliktuves nokopētu izvēlētajā jaunajā vietā."
 
-#: dolphinmainwindow.cpp:1864
+#: dolphinmainwindow.cpp:1861
 #, kde-format
 msgctxt "@action:inmenu Edit"
 msgid "Paste"
 msgstr "Ielīmēt"
 
-#: dolphinmainwindow.cpp:1866
+#: dolphinmainwindow.cpp:1863
 #, kde-kuit-format
 msgctxt "@info:whatsthis paste"
 msgid ""
@@ -524,19 +524,19 @@ msgstr ""
 "<emphasis>Izgriezt</emphasis> darbību, tie tiks dzēsti no savas sākotnējas "
 "atrašanās vietas."
 
-#: dolphinmainwindow.cpp:1873
+#: dolphinmainwindow.cpp:1870
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy to Other View"
 msgstr "Kopēt uz otru skatu"
 
-#: dolphinmainwindow.cpp:1874
+#: dolphinmainwindow.cpp:1871
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Copy to Other View…"
 msgstr "Kopēt uz otru skatu…"
 
-#: dolphinmainwindow.cpp:1876
+#: dolphinmainwindow.cpp:1873
 #, kde-kuit-format
 msgctxt "@info:whatsthis Copy"
 msgid ""
@@ -546,25 +546,25 @@ msgstr ""
 "Šī darbība kopē atlasītos vienumus no aktīvā skata uz otru skatu. (Pieejams "
 "tikai sadalīta skata režīmā.)"
 
-#: dolphinmainwindow.cpp:1880
+#: dolphinmainwindow.cpp:1877
 #, kde-format
 msgctxt "@action:inmenu Edit"
 msgid "Copy to Other View"
 msgstr "Kopēt uz otru skatu"
 
-#: dolphinmainwindow.cpp:1885
+#: dolphinmainwindow.cpp:1882
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to Other View"
 msgstr "Pārvietot uz otru skatu"
 
-#: dolphinmainwindow.cpp:1886
+#: dolphinmainwindow.cpp:1883
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Move to Other View…"
 msgstr "Pārvietot uz otru skatu…"
 
-#: dolphinmainwindow.cpp:1888
+#: dolphinmainwindow.cpp:1885
 #, kde-kuit-format
 msgctxt "@info:whatsthis Move"
 msgid ""
@@ -574,25 +574,25 @@ msgstr ""
 "Šī darbība pārvieto atlasītos vienumus no aktīvā skata uz otru skatu. "
 "(Pieejams tikai sadalītā skata režīmā.)"
 
-#: dolphinmainwindow.cpp:1892
+#: dolphinmainwindow.cpp:1889
 #, kde-format
 msgctxt "@action:inmenu Edit"
 msgid "Move to Other View"
 msgstr "Pārvietot uz otru skatu"
 
-#: dolphinmainwindow.cpp:1897
+#: dolphinmainwindow.cpp:1894
 #, kde-format
 msgctxt "@action:inmenu Tools"
 msgid "Filter…"
 msgstr "Filtrēt…"
 
-#: dolphinmainwindow.cpp:1898
+#: dolphinmainwindow.cpp:1895
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Show Filter Bar"
 msgstr "Parādīt filtra joslu"
 
-#: dolphinmainwindow.cpp:1900
+#: dolphinmainwindow.cpp:1897
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -605,30 +605,30 @@ msgstr ""
 ">Tajā varat ievadīt tekstu, lai filtrētu parādītās datnes un mapes. Skatā "
 "būs parādītas tikai tās datnes un mapes, kas nosaukumā satur ievadīto tekstu."
 
-#: dolphinmainwindow.cpp:1912
+#: dolphinmainwindow.cpp:1909
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Toggle Filter Bar"
 msgstr "Pārslēgt filtra joslu"
 
-#: dolphinmainwindow.cpp:1913
+#: dolphinmainwindow.cpp:1910
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Filter"
 msgstr "Filtrs"
 
-#: dolphinmainwindow.cpp:1921 search/bar.cpp:216
+#: dolphinmainwindow.cpp:1918 search/bar.cpp:216
 #, kde-format
 msgid "Search…"
 msgstr "Meklēt…"
 
-#: dolphinmainwindow.cpp:1922
+#: dolphinmainwindow.cpp:1919
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Search for files and folders"
 msgstr "Meklēt datnes un mapes"
 
-#: dolphinmainwindow.cpp:1924
+#: dolphinmainwindow.cpp:1921
 #, kde-kuit-format
 msgctxt "@info:whatsthis find"
 msgid ""
@@ -640,20 +640,20 @@ msgstr ""
 "joslu</emphasis>. Šajā joslā varat ievadīt meklēto pēc teksta un norādīt "
 "meklēšanas nosacījumus.</para>"
 
-#: dolphinmainwindow.cpp:1933
+#: dolphinmainwindow.cpp:1930
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Toggle Search Bar"
 msgstr "Pārslēgt meklēšanas joslu"
 
-#: dolphinmainwindow.cpp:1934
+#: dolphinmainwindow.cpp:1931
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Search"
 msgstr "Meklēt"
 
 #. i18n: This action toggles a selection mode.
-#: dolphinmainwindow.cpp:1949
+#: dolphinmainwindow.cpp:1946
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Select Files and Folders"
@@ -661,13 +661,13 @@ msgstr "Atlasīt datnes un mapes"
 
 #. i18n: Opens a selection mode for selecting files/folders.
 #. The text is kept so unspecific because it will be shown on the toolbar where space is at a premium.
-#: dolphinmainwindow.cpp:1952
+#: dolphinmainwindow.cpp:1949
 #, kde-format
 msgctxt "@action:intoolbar"
 msgid "Select"
 msgstr "Atlasīt"
 
-#: dolphinmainwindow.cpp:1955
+#: dolphinmainwindow.cpp:1952
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -685,19 +685,19 @@ msgstr ""
 "režīmā, jums ir pieejama ātrās piekļuves josla, kurā ir redzamas pieejamās "
 "un ar atlasītajiem vienumiem veicamās darbības.</para>"
 
-#: dolphinmainwindow.cpp:1978
+#: dolphinmainwindow.cpp:1975
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid "This selects all files and folders in the current location."
 msgstr "Šī darbība atlasa visas datnes un mapes pašreizējā atvērtajā vietā."
 
-#: dolphinmainwindow.cpp:1982 dolphinpart.cpp:166
+#: dolphinmainwindow.cpp:1979 dolphinpart.cpp:166
 #, kde-format
 msgctxt "@action:inmenu Edit"
 msgid "Invert Selection"
 msgstr "Invertēt izvēli"
 
-#: dolphinmainwindow.cpp:1984
+#: dolphinmainwindow.cpp:1981
 #, kde-kuit-format
 msgctxt "@info:whatsthis invert"
 msgid ""
@@ -706,7 +706,7 @@ msgid ""
 msgstr ""
 "Šī darbība atlasa tikai tos vienumus, kurus <emphasis>neatlasījāt</emphasis>."
 
-#: dolphinmainwindow.cpp:2004
+#: dolphinmainwindow.cpp:2001
 #, kde-kuit-format
 msgctxt "@info:whatsthis split"
 msgid ""
@@ -720,7 +720,7 @@ msgstr ""
 "skats būs tumšāks. </para>Lai aizvērtu vienu no skatiem, spiediet vēlreiz uz "
 "šīs pogas."
 
-#: dolphinmainwindow.cpp:2019
+#: dolphinmainwindow.cpp:2016
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -728,25 +728,25 @@ msgid ""
 "window."
 msgstr "Ja mapes skats ir sadalīts, jaunā logā atvērsies aktīvās mapes skats."
 
-#: dolphinmainwindow.cpp:2027
+#: dolphinmainwindow.cpp:2024
 #, kde-format
 msgctxt "@action:intoolbar Stash"
 msgid "Stash"
 msgstr "Krātuve"
 
-#: dolphinmainwindow.cpp:2028
+#: dolphinmainwindow.cpp:2025
 #, kde-format
 msgctxt "@info"
 msgid "Opens the stash virtual directory in a split window"
 msgstr "Atver virtuālu krātuves mapi sadalītā skatā."
 
-#: dolphinmainwindow.cpp:2037
+#: dolphinmainwindow.cpp:2034
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Refresh view"
 msgstr "Pārlādēt skatu"
 
-#: dolphinmainwindow.cpp:2039
+#: dolphinmainwindow.cpp:2036
 #, kde-kuit-format
 msgctxt "@info:whatsthis refresh"
 msgid ""
@@ -760,31 +760,31 @@ msgstr ""
 "un mapju skatu.</para><para>Ja skats ir sadalīts, pārlādēts tiks tikai "
 "aktīvais skats.</para>"
 
-#: dolphinmainwindow.cpp:2046
+#: dolphinmainwindow.cpp:2043
 #, kde-format
 msgctxt "@action:inmenu View"
 msgid "Stop"
 msgstr "Apturēt"
 
-#: dolphinmainwindow.cpp:2047
+#: dolphinmainwindow.cpp:2044
 #, kde-format
 msgctxt "@info"
 msgid "Stop loading"
 msgstr "Apturēt ielādi"
 
-#: dolphinmainwindow.cpp:2048
+#: dolphinmainwindow.cpp:2045
 #, kde-format
 msgctxt "@info"
 msgid "This stops the loading of the contents of the current folder."
 msgstr "Šī rīcība apturēs mapes satura ielādi."
 
-#: dolphinmainwindow.cpp:2053
+#: dolphinmainwindow.cpp:2050
 #, kde-format
 msgctxt "@action:inmenu Navigation Bar"
 msgid "Editable Location"
 msgstr "Rediģējama atrašanās vieta"
 
-#: dolphinmainwindow.cpp:2055
+#: dolphinmainwindow.cpp:2052
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -798,13 +798,13 @@ msgstr ""
 "varat pārslēgties uz rediģēšanu, klikšķinot peles labo pogu uz atrašanās "
 "vietu un pārslēdzoties atpakaļ, apstiprinot rediģēto vietu."
 
-#: dolphinmainwindow.cpp:2063
+#: dolphinmainwindow.cpp:2060
 #, kde-format
 msgctxt "@action:inmenu Navigation Bar"
 msgid "Replace Location"
 msgstr "Aizvietot vietu"
 
-#: dolphinmainwindow.cpp:2068
+#: dolphinmainwindow.cpp:2065
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -814,19 +814,19 @@ msgstr ""
 "Šī darbība pārslēdzas uz vietas rediģēšanu un to atlasa, ļaujot jums ātri "
 "ievadīt citu vietu."
 
-#: dolphinmainwindow.cpp:2098
+#: dolphinmainwindow.cpp:2095
 #, kde-format
 msgctxt "@action:inmenu File"
 msgid "Undo close tab"
 msgstr "Atsaukt cilnes aizvēršanu"
 
-#: dolphinmainwindow.cpp:2099
+#: dolphinmainwindow.cpp:2096
 #, kde-format
 msgctxt "@info:whatsthis undo close tab"
 msgid "This returns you to the previously closed tab."
 msgstr "Šī darbība jūs atgriež iepriekš aizvērtajā cilnē."
 
-#: dolphinmainwindow.cpp:2107
+#: dolphinmainwindow.cpp:2104
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -842,7 +842,7 @@ msgstr ""
 "<filename>Atkritni</filename>. <nl/>Mēģinot veikt neatsaucamas izmaiņas, tās "
 "būs jāapstiprina."
 
-#: dolphinmainwindow.cpp:2118
+#: dolphinmainwindow.cpp:2115
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -858,7 +858,7 @@ msgstr ""
 "citu vietu vai uz <filename>Atkritni</filename>. <nl/>Mēģinot veikt "
 "neatsaucamas izmaiņas, tās būs jāapstiprina."
 
-#: dolphinmainwindow.cpp:2148
+#: dolphinmainwindow.cpp:2145
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -871,19 +871,19 @@ msgstr ""
 "personīgos datus, kā arī slēptās mapes ar programmu datiem un konfigurācijas "
 "datnēm."
 
-#: dolphinmainwindow.cpp:2155
+#: dolphinmainwindow.cpp:2152
 #, kde-format
 msgctxt "@action:inmenu Tools"
 msgid "Compare Files"
 msgstr "Salīdzināt datnes"
 
-#: dolphinmainwindow.cpp:2161
+#: dolphinmainwindow.cpp:2158
 #, kde-format
 msgctxt "@action:inmenu Tools"
 msgid "Manage Disk Space Usage"
 msgstr "Pārvaldiet vietas diskā lietojumu"
 
-#: dolphinmainwindow.cpp:2169
+#: dolphinmainwindow.cpp:2166
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -895,13 +895,13 @@ msgstr ""
 "para><para>Lietojiet <emphasis>Vairāk meklēšanas rīku</emphasis> izvēlni, "
 "lai to pārvaldītu.</para>"
 
-#: dolphinmainwindow.cpp:2183
+#: dolphinmainwindow.cpp:2180
 #, kde-format
 msgctxt "@action:inmenu Tools"
 msgid "Open Terminal"
 msgstr "Atvērt termināli"
 
-#: dolphinmainwindow.cpp:2185
+#: dolphinmainwindow.cpp:2182
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -914,13 +914,13 @@ msgstr ""
 "iepazīstieties palīdzības sadaļu termināļa programmā.</para>"
 
 #. i18n: "Here" refers to the location(s) of the currently selected item(s) or the currently viewed location if nothing is selected.
-#: dolphinmainwindow.cpp:2193
+#: dolphinmainwindow.cpp:2190
 #, kde-format
 msgctxt "@action:inmenu Tools"
 msgid "Open Terminal Here"
 msgstr "Atvērt termināli šeit"
 
-#: dolphinmainwindow.cpp:2195
+#: dolphinmainwindow.cpp:2192
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -932,13 +932,13 @@ msgstr ""
 "programmu.</para><para>Lai uzzinātu vairāk par termināļu lietošanu, "
 "iepazīstieties ar palīdzības sadaļu termināļa programmā.</para>"
 
-#: dolphinmainwindow.cpp:2203
+#: dolphinmainwindow.cpp:2200
 #, kde-format
 msgctxt "@title:menu"
 msgid "&Bookmarks"
 msgstr "&Grāmatzīmes"
 
-#: dolphinmainwindow.cpp:2213
+#: dolphinmainwindow.cpp:2210
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -956,96 +956,96 @@ msgstr ""
 "para><para>Savukārt <interface>%1</interface> poga ir vienkārša un maza,bet "
 "var paildzināt dažādu retāk izmantotu darbību atrašanu un piekļuvi.</para>"
 
-#: dolphinmainwindow.cpp:2238
+#: dolphinmainwindow.cpp:2235
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Go to Tab %1"
 msgstr "Iet uz cilni „%1“"
 
-#: dolphinmainwindow.cpp:2251
+#: dolphinmainwindow.cpp:2248
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Last Tab"
 msgstr "Pēdējā cilne"
 
-#: dolphinmainwindow.cpp:2252
+#: dolphinmainwindow.cpp:2249
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Go to Last Tab"
 msgstr "Iet uz pēdējo cilni"
 
-#: dolphinmainwindow.cpp:2258
+#: dolphinmainwindow.cpp:2255
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Next Tab"
 msgstr "Nākamā cilne"
 
-#: dolphinmainwindow.cpp:2259
+#: dolphinmainwindow.cpp:2256
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Go to Next Tab"
 msgstr "Iet uz nākamo cilni"
 
-#: dolphinmainwindow.cpp:2265
+#: dolphinmainwindow.cpp:2262
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Previous Tab"
 msgstr "Iepriekšējā cilne"
 
-#: dolphinmainwindow.cpp:2266
+#: dolphinmainwindow.cpp:2263
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Go to Previous Tab"
 msgstr "Iet uz iepriekšējo cilni"
 
-#: dolphinmainwindow.cpp:2273
+#: dolphinmainwindow.cpp:2270
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Target"
 msgstr "Rādīt mērķi"
 
-#: dolphinmainwindow.cpp:2279
+#: dolphinmainwindow.cpp:2276
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open in New Tab"
 msgstr "Atvērt jaunā cilnē"
 
-#: dolphinmainwindow.cpp:2284
+#: dolphinmainwindow.cpp:2281
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open in New Tabs"
 msgstr "Atvērt jaunās cilnēs"
 
-#: dolphinmainwindow.cpp:2289
+#: dolphinmainwindow.cpp:2286
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open in New Window"
 msgstr "Atvērt jaunā logā"
 
-#: dolphinmainwindow.cpp:2294 panels/places/placespanel.cpp:45
+#: dolphinmainwindow.cpp:2291 panels/places/placespanel.cpp:45
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Open in Split View"
 msgstr "Atvērt sadalītā skatā"
 
-#: dolphinmainwindow.cpp:2306
+#: dolphinmainwindow.cpp:2303
 #, kde-format
 msgid "&Window Color Scheme"
 msgstr "&Loga krāsu shēma"
 
-#: dolphinmainwindow.cpp:2319
+#: dolphinmainwindow.cpp:2316
 #, kde-format
 msgctxt "@action:inmenu Panels"
 msgid "Unlock Panels"
 msgstr "Atslēgt paneļus"
 
-#: dolphinmainwindow.cpp:2321
+#: dolphinmainwindow.cpp:2318
 #, kde-format
 msgctxt "@action:inmenu Panels"
 msgid "Lock Panels"
 msgstr "Slēgt paneļus"
 
-#: dolphinmainwindow.cpp:2324
+#: dolphinmainwindow.cpp:2321
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1059,13 +1059,13 @@ msgstr ""
 "vilkt uz logu otru pusi un tiem ir aizvēršanas poga.<nl/>Slēgti paneļi daudz "
 "vienmērīgāk iegulstas logā."
 
-#: dolphinmainwindow.cpp:2333
+#: dolphinmainwindow.cpp:2330
 #, kde-format
 msgctxt "@title:window"
 msgid "Information"
 msgstr "Informācija"
 
-#: dolphinmainwindow.cpp:2356
+#: dolphinmainwindow.cpp:2353
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1076,7 +1076,7 @@ msgstr ""
 "<interface>Izvēlne|Paneļi</interface> vai <interface>Skats|Paneļi</"
 "interface>.</para>"
 
-#: dolphinmainwindow.cpp:2363
+#: dolphinmainwindow.cpp:2360
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1093,7 +1093,7 @@ msgstr ""
 "pašreiz atvērto mapi.<nl/>Atsevišķi atlasītiem vienumiem tiek sniegts satura "
 "priekšskatījums.</para>"
 
-#: dolphinmainwindow.cpp:2371
+#: dolphinmainwindow.cpp:2368
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1110,13 +1110,13 @@ msgstr ""
 "pielāgot, kāda informācija un kādā veidā tiek sniegta, ar peles labo klikšķi."
 "</para>"
 
-#: dolphinmainwindow.cpp:2380
+#: dolphinmainwindow.cpp:2377
 #, kde-format
 msgctxt "@title:window"
 msgid "Folders"
 msgstr "Mapes"
 
-#: dolphinmainwindow.cpp:2400
+#: dolphinmainwindow.cpp:2397
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1128,7 +1128,7 @@ msgstr ""
 "<nl/><nl/>Šis panelis rāda <emphasis>datņu sistēmas</emphasis> mapes, "
 "izmantojot <emphasis>koka skatu</emphasis>."
 
-#: dolphinmainwindow.cpp:2405
+#: dolphinmainwindow.cpp:2402
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1142,13 +1142,13 @@ msgstr ""
 "lai to atvērtu. Spiediet uz bultas pa kreisi no mapes, lai redzētu tās "
 "apakšmapes. Tas ļauj ātri pārslēgties starp mapēm.</para>"
 
-#: dolphinmainwindow.cpp:2415
+#: dolphinmainwindow.cpp:2412
 #, kde-format
 msgctxt "@title:window Shell terminal"
 msgid "Terminal"
 msgstr "Terminālis"
 
-#: dolphinmainwindow.cpp:2441
+#: dolphinmainwindow.cpp:2438
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1166,7 +1166,7 @@ msgstr ""
 "uzdevumu veikšanai. Lai uzzinātu vairāk par termināļiem, skatiet atsevišķu "
 "termināļa programmu (piemēram, „Konsole“) palīdzības sadaļu.</para>"
 
-#: dolphinmainwindow.cpp:2449
+#: dolphinmainwindow.cpp:2446
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1184,25 +1184,25 @@ msgstr ""
 "sarežģītāku uzdevumu veikšanai. Lai uzzinātu vairāk par termināļiem, skatiet "
 "atsevišķu termināļa programmu (piemēram, „Konsole“) palīdzības sadaļu.</para>"
 
-#: dolphinmainwindow.cpp:2459 dolphinmainwindow.cpp:3117
+#: dolphinmainwindow.cpp:2456 dolphinmainwindow.cpp:3114
 #, kde-format
 msgctxt "@action:inmenu Tools"
 msgid "Focus Terminal Panel"
 msgstr "Padarīt aktīvu termināļa paneli"
 
-#: dolphinmainwindow.cpp:2460
+#: dolphinmainwindow.cpp:2457
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Move keyboard focus to and from the Terminal panel."
 msgstr "Pārvietojiet tastatūras fokusu uz vai no termināļa paneļa."
 
-#: dolphinmainwindow.cpp:2466
+#: dolphinmainwindow.cpp:2463
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Follow Directory Switch"
 msgstr ""
 
-#: dolphinmainwindow.cpp:2468
+#: dolphinmainwindow.cpp:2465
 #, kde-format
 msgctxt "@info:tooltip"
 msgid ""
@@ -1210,19 +1210,19 @@ msgid ""
 "whenever directory is changed."
 msgstr ""
 
-#: dolphinmainwindow.cpp:2484
+#: dolphinmainwindow.cpp:2481
 #, kde-format
 msgctxt "@title:window"
 msgid "Places"
 msgstr "Vietas"
 
-#: dolphinmainwindow.cpp:2512
+#: dolphinmainwindow.cpp:2509
 #, kde-format
 msgctxt "@item:inmenu"
 msgid "Show Hidden Places"
 msgstr "Rādīt slēptās vietas"
 
-#: dolphinmainwindow.cpp:2516
+#: dolphinmainwindow.cpp:2513
 #, kde-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1233,7 +1233,7 @@ msgstr ""
 "Šī iespēja panelī parāda visas slēptās vietas. Tās būs parādīts "
 "puscaurspīdīgas un ļaus noņemt to paslēpšanas īpašību."
 
-#: dolphinmainwindow.cpp:2528
+#: dolphinmainwindow.cpp:2525
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1249,7 +1249,7 @@ msgstr ""
 "Tāpat tas satur sadaļas, lai atrastu nesen saglabātās datnes vai noteikta "
 "tipa datnes.</para>"
 
-#: dolphinmainwindow.cpp:2535
+#: dolphinmainwindow.cpp:2532
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1274,45 +1274,45 @@ msgstr ""
 "panelī un atlasiet <interface>Parādīt paslēptas vietas</interface>, lai to "
 "atkal parādītu.</para>"
 
-#: dolphinmainwindow.cpp:2549 dolphinmainwindow.cpp:3135
+#: dolphinmainwindow.cpp:2546 dolphinmainwindow.cpp:3132
 #, kde-format
 msgctxt "@action:inmenu View"
 msgid "Focus Places Panel"
 msgstr "Fokusēties uz vietu paneli"
 
-#: dolphinmainwindow.cpp:2550
+#: dolphinmainwindow.cpp:2547
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Move keyboard focus to and from the Places panel."
 msgstr "Pārvietot tastatūras fokusu uz vai no vietu paneļa."
 
-#: dolphinmainwindow.cpp:2556
+#: dolphinmainwindow.cpp:2553
 #, kde-format
 msgctxt "@action:inmenu View"
 msgid "Show Panels"
 msgstr "Rādīt paneļus"
 
-#: dolphinmainwindow.cpp:2642
+#: dolphinmainwindow.cpp:2639
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Cannot rename: You do not have permission to rename items in this folder."
 msgstr "Nevar pārdēvēt — jums nav atļaujas šī mapes vienuma pārdēvēšanai."
 
-#: dolphinmainwindow.cpp:2645 dolphinmainwindow.cpp:2662
+#: dolphinmainwindow.cpp:2642 dolphinmainwindow.cpp:2659
 #, kde-format
 msgctxt "@info"
 msgid ""
 "Cannot delete: You do not have permission to remove items from this folder."
 msgstr "Nevar dzēst — jums nav atļaujas šīs mapes vienuma noņemšanai."
 
-#: dolphinmainwindow.cpp:2647
+#: dolphinmainwindow.cpp:2644
 #, kde-format
 msgctxt "@info"
 msgid "Cannot cut: You do not have permission to move items from this folder."
 msgstr "Nevar izgriezt — jums nav atļaujas šī mapes vienuma pārvietošanai."
 
-#: dolphinmainwindow.cpp:2652
+#: dolphinmainwindow.cpp:2649
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1320,31 +1320,31 @@ msgid ""
 "folder."
 msgstr "Nevar te dublēt — jums nav atļaujas šajā mapē izveidot vienumus."
 
-#: dolphinmainwindow.cpp:2674
+#: dolphinmainwindow.cpp:2671
 #, kde-format
 msgctxt "@info"
 msgid "Cannot copy to other view: No files selected."
 msgstr "Nevar kopēt uz otru skatu — nav atlasīta neviena datne."
 
-#: dolphinmainwindow.cpp:2676
+#: dolphinmainwindow.cpp:2673
 #, kde-format
 msgctxt "@info"
 msgid "Cannot move to other view: No files selected."
 msgstr "Nevar pārkopēt uz otru skatu — nav atlasīta neviena datne."
 
-#: dolphinmainwindow.cpp:2695
+#: dolphinmainwindow.cpp:2692
 #, kde-format
 msgctxt "@info"
 msgid "Cannot copy to other view: The other view already contains these items."
 msgstr "Nevar kopēt uz otru skatu — otrs skats jau satur šos vienumus."
 
-#: dolphinmainwindow.cpp:2698
+#: dolphinmainwindow.cpp:2695
 #, kde-format
 msgctxt "@info"
 msgid "Cannot move to other view: The other view already contains these items."
 msgstr "Nevar pārvietot uz otru skatu: otrs skats jau satur šos vienumus."
 
-#: dolphinmainwindow.cpp:2703
+#: dolphinmainwindow.cpp:2700
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1352,7 +1352,7 @@ msgid ""
 "destination folder."
 msgstr "Nevar kopēt uz otru skatu — jums nav atļaujas rakstīt mērķa mapē."
 
-#: dolphinmainwindow.cpp:2707
+#: dolphinmainwindow.cpp:2704
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1360,7 +1360,7 @@ msgid ""
 "destination folder."
 msgstr "Nevar pārvietot uz otru skatu — jums nav atļaujas rakstīt mērķa mapē."
 
-#: dolphinmainwindow.cpp:2713
+#: dolphinmainwindow.cpp:2710
 #, kde-format
 msgctxt "@info"
 msgid ""
@@ -1370,7 +1370,7 @@ msgstr ""
 "Nevar pārvietot uz otru skatu — jums nav atļauju pārvietot vienumus no šīs "
 "mapes."
 
-#: dolphinmainwindow.cpp:2737
+#: dolphinmainwindow.cpp:2734
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1385,13 +1385,13 @@ msgstr ""
 "emphasis>. Šīs hierarhijas augšā ir mape, kas satur visus datoram "
 "pievienotos datus — datora <emphasis>saknes mape</emphasis>.</para>"
 
-#: dolphinmainwindow.cpp:2824 dolphinmainwindow.cpp:2843
+#: dolphinmainwindow.cpp:2821 dolphinmainwindow.cpp:2840
 #, kde-format
 msgctxt "@action:intoolbar Close left view"
 msgid "Close"
 msgstr "Aizvērt"
 
-#: dolphinmainwindow.cpp:2825 dolphinmainwindow.cpp:2844
+#: dolphinmainwindow.cpp:2822 dolphinmainwindow.cpp:2841
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu Close left view"
 #| msgid "Close Left View"
@@ -1399,7 +1399,7 @@ msgctxt "@info View refer here to split view"
 msgid "Close Left View"
 msgstr "Aizvērt kreiso skatu"
 
-#: dolphinmainwindow.cpp:2827 dolphinmainwindow.cpp:2846
+#: dolphinmainwindow.cpp:2824 dolphinmainwindow.cpp:2843
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu Close left view"
 #| msgid "Close Left View"
@@ -1407,7 +1407,7 @@ msgctxt "@action:inmenu View refer here to split view"
 msgid "Close Left View"
 msgstr "Aizvērt kreiso skatu"
 
-#: dolphinmainwindow.cpp:2829 dolphinmainwindow.cpp:2848
+#: dolphinmainwindow.cpp:2826 dolphinmainwindow.cpp:2845
 #, fuzzy, kde-format
 #| msgctxt "@action:intoolbar Move left view to a new window"
 #| msgid "Pop out Left View"
@@ -1415,7 +1415,7 @@ msgctxt "@action:intoolbar Move left split view to a new window"
 msgid "Pop out Left View"
 msgstr "Atdalīt kreiso skatu"
 
-#: dolphinmainwindow.cpp:2830 dolphinmainwindow.cpp:2849
+#: dolphinmainwindow.cpp:2827 dolphinmainwindow.cpp:2846
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Move left view to a new window"
@@ -1423,15 +1423,15 @@ msgctxt "@info View refer here to split view"
 msgid "Move left split view to a new window"
 msgstr "Pārvietot kreiso skatu uz jaunu logu"
 
-#: dolphinmainwindow.cpp:2832 dolphinmainwindow.cpp:2851
-#: dolphinmainwindow.cpp:2861
+#: dolphinmainwindow.cpp:2829 dolphinmainwindow.cpp:2848
+#: dolphinmainwindow.cpp:2858
 #, kde-format
 msgctxt "@action:intoolbar Close right view"
 msgid "Close"
 msgstr "Aizvērt"
 
-#: dolphinmainwindow.cpp:2833 dolphinmainwindow.cpp:2852
-#: dolphinmainwindow.cpp:2862
+#: dolphinmainwindow.cpp:2830 dolphinmainwindow.cpp:2849
+#: dolphinmainwindow.cpp:2859
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu Close left view"
 #| msgid "Close Right View"
@@ -1439,8 +1439,8 @@ msgctxt "@info View refer here to split view"
 msgid "Close Right View"
 msgstr "Aizvērt labo skatu"
 
-#: dolphinmainwindow.cpp:2835 dolphinmainwindow.cpp:2854
-#: dolphinmainwindow.cpp:2864
+#: dolphinmainwindow.cpp:2832 dolphinmainwindow.cpp:2851
+#: dolphinmainwindow.cpp:2861
 #, fuzzy, kde-format
 #| msgctxt "@action:inmenu Close left view"
 #| msgid "Close Right View"
@@ -1448,8 +1448,8 @@ msgctxt "@action:inmenu View refer here to split view"
 msgid "Close Right View"
 msgstr "Aizvērt labo skatu"
 
-#: dolphinmainwindow.cpp:2837 dolphinmainwindow.cpp:2856
-#: dolphinmainwindow.cpp:2866
+#: dolphinmainwindow.cpp:2834 dolphinmainwindow.cpp:2853
+#: dolphinmainwindow.cpp:2863
 #, fuzzy, kde-format
 #| msgctxt "@action:intoolbar Move right view to a new window"
 #| msgid "Pop out Right View"
@@ -1457,8 +1457,8 @@ msgctxt "@action:intoolbar Move right split view to a new window"
 msgid "Pop out Right View"
 msgstr "Atdalīt labo skatu"
 
-#: dolphinmainwindow.cpp:2838 dolphinmainwindow.cpp:2857
-#: dolphinmainwindow.cpp:2867
+#: dolphinmainwindow.cpp:2835 dolphinmainwindow.cpp:2854
+#: dolphinmainwindow.cpp:2864
 #, fuzzy, kde-format
 #| msgctxt "@info"
 #| msgid "Move right view to a new window"
@@ -1466,25 +1466,25 @@ msgctxt "@info View refer here to split view"
 msgid "Move right split view to a new window"
 msgstr "Pārvietot labu skatu uz jaunu logu"
 
-#: dolphinmainwindow.cpp:2879
+#: dolphinmainwindow.cpp:2876
 #, kde-format
 msgctxt "@action:intoolbar Split view"
 msgid "Split"
 msgstr "Sadalīt"
 
-#: dolphinmainwindow.cpp:2881
+#: dolphinmainwindow.cpp:2878
 #, kde-format
 msgctxt "@info"
 msgid "Split view"
 msgstr "Sadalīt skatu"
 
-#: dolphinmainwindow.cpp:2883
+#: dolphinmainwindow.cpp:2880
 #, kde-format
 msgctxt "@action:intoolbar Move view in focus to a new window"
 msgid "Pop out"
 msgstr "Atdalīt"
 
-#: dolphinmainwindow.cpp:2943
+#: dolphinmainwindow.cpp:2940
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1502,7 +1502,7 @@ msgstr ""
 "lielākā daļa tās satura būs pieejama <interface>Izvēlnes</interface> pogā, "
 "kuru redzēsiet <emphasis>Rīkjoslā</emphasis>.</para>"
 
-#: dolphinmainwindow.cpp:2950
+#: dolphinmainwindow.cpp:2947
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1525,7 +1525,7 @@ msgstr ""
 "spiežot peles labo pogu. Tāpat spiediet peles labo pogu, ja vēlaties parādīt "
 "vai paslēpt tekstu pie ikonām.</para>"
 
-#: dolphinmainwindow.cpp:2962
+#: dolphinmainwindow.cpp:2959
 #, kde-kuit-format
 msgctxt "@info:whatsthis main view"
 msgid ""
@@ -1553,7 +1553,7 @@ msgstr ""
 "link> . Tas atvērs <emphasis>Rokasgrāmatu</emphasis>, kur ir aprakstīti "
 "programmas lietošanas pamati.</para>"
 
-#: dolphinmainwindow.cpp:2978
+#: dolphinmainwindow.cpp:2975
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1567,7 +1567,7 @@ msgstr ""
 "reizē nospiestas, izraisīs kādu darbību. Visas šajā programmā esošās "
 "darbības iespējams šādi izsaukt.</para>"
 
-#: dolphinmainwindow.cpp:2984
+#: dolphinmainwindow.cpp:2981
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1579,7 +1579,7 @@ msgstr ""
 "<emphasis>rīkjoslā</emphasis>.</para><para>Visus ierakstus, kurus redzat "
 "<interface>izvēlnē</interface>, varat novietot arī rīkjoslā.</para>"
 
-#: dolphinmainwindow.cpp:2988
+#: dolphinmainwindow.cpp:2985
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1598,7 +1598,7 @@ msgstr ""
 #. frustrate the user. If there are multiple languages that the user might
 #. know with a reasonable chance you might want to have 2 external links.
 #. The same might be true for any external link you translate.
-#: dolphinmainwindow.cpp:3008
+#: dolphinmainwindow.cpp:3005
 #, kde-kuit-format
 msgctxt "@info:whatsthis handbook"
 msgid ""
@@ -1614,7 +1614,7 @@ msgstr ""
 "url='https://userbase.kde.org/Dolphin/File_Management'>spiediet te</link>. "
 "Atvērsies atsevišķa lapa KDE Lietotāju vikilapā.</para>"
 
-#: dolphinmainwindow.cpp:3013
+#: dolphinmainwindow.cpp:3010
 #, kde-kuit-format
 msgctxt "@info:whatsthis whatsthis button"
 msgid ""
@@ -1636,7 +1636,7 @@ msgstr ""
 "vikilapā</link>.</para><para>„Kas tas ir?“ palīdzība daudzos logos nav "
 "pieejama, tāpēc pie tās pārāk nepierodiet.</para>"
 
-#: dolphinmainwindow.cpp:3024
+#: dolphinmainwindow.cpp:3021
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1652,7 +1652,7 @@ msgstr ""
 "ziņojumiem. Lai uzzinātu, kā iesniegt labus kļūdu ziņojumus, spiediet<link "
 "url='https://community.kde.org/Get_Involved/Bug_Reporting'>te</link>.</para>"
 
-#: dolphinmainwindow.cpp:3033
+#: dolphinmainwindow.cpp:3030
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1674,7 +1674,7 @@ msgstr ""
 "tikšanās u.c.</para><para><emphasis>KDE e.V.</emphasis> ir bezpeļņas "
 "organizācija, zem kuras darbojas KDE kopiena.</para>"
 
-#: dolphinmainwindow.cpp:3046
+#: dolphinmainwindow.cpp:3043
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1686,7 +1686,7 @@ msgstr ""
 "sekundāro valodu, kas tiks izmantota tad, ja kaut kur trūkst teksta jūsu "
 "vēlamajā valodā."
 
-#: dolphinmainwindow.cpp:3051
+#: dolphinmainwindow.cpp:3048
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1696,7 +1696,7 @@ msgstr ""
 "Spiežot te, atveras logs, kas jūs informēs par versiju, licenci, "
 "izmantotajām bibliotēkām un šīs programmas uzturētājiem."
 
-#: dolphinmainwindow.cpp:3056
+#: dolphinmainwindow.cpp:3053
 #, kde-kuit-format
 msgctxt "@info:whatsthis"
 msgid ""
@@ -1710,19 +1710,19 @@ msgstr ""
 "prieku lietojat šo programmu, bet nezināt, kas ir KDE, vai vēlaties redzēt "
 "jauko pūķi, tad apskatieties!"
 
-#: dolphinmainwindow.cpp:3111 dolphinmainwindow.cpp:3122
+#: dolphinmainwindow.cpp:3108 dolphinmainwindow.cpp:3119
 #, kde-format
 msgctxt "@action:inmenu Tools"
 msgid "Defocus Terminal Panel"
 msgstr "Termināļa paneli padarīt neaktīvu"
 
-#: dolphinmainwindow.cpp:3129
+#: dolphinmainwindow.cpp:3126
 #, kde-format
 msgctxt "@action:inmenu View"
 msgid "Defocus Terminal Panel"
 msgstr "Noņemt fokusu no termināļa paneļa"
 
-#: dolphinmainwindow.cpp:3140
+#: dolphinmainwindow.cpp:3137
 #, kde-format
 msgctxt "@action:inmenu View"
 msgid "Defocus Places Panel"
@@ -2059,7 +2059,7 @@ msgctxt "@info:status"
 msgid "No items found."
 msgstr "Nekas nav atrasts."
 
-#: dolphinviewcontainer.cpp:734
+#: dolphinviewcontainer.cpp:733
 #, fuzzy, kde-format
 #| msgctxt "Textual representation of files. %1 is the number of files."
 #| msgid "One File"
@@ -2068,7 +2068,7 @@ msgctxt "@action"
 msgid "Open as File"
 msgstr "%1 datne"
 
-#: dolphinviewcontainer.cpp:751
+#: dolphinviewcontainer.cpp:750
 #, fuzzy, kde-kuit-format
 #| msgctxt "@info"
 #| msgid "Could not access <filename>%1</filename>."
@@ -2076,13 +2076,13 @@ msgctxt "@info"
 msgid "Trying to open a file as a folder: <filename>%1</filename>"
 msgstr "Neizdevās ierakstīt <filename>%1</filename>."
 
-#: dolphinviewcontainer.cpp:915
+#: dolphinviewcontainer.cpp:914
 #, kde-format
 msgctxt "@info:status"
 msgid "Dolphin does not support web pages, the web browser has been launched"
 msgstr "„Dolphin“ neatbalsta tīmekļa lapas, tāpēc ir atvērts tīmekļa pārlūks"
 
-#: dolphinviewcontainer.cpp:918
+#: dolphinviewcontainer.cpp:917
 #, kde-format
 msgctxt "@info:status"
 msgid ""
@@ -2090,43 +2090,43 @@ msgid ""
 msgstr ""
 "„Dolphin“ neatbalsta šo protokolu, tāpēc ir atvērta noklusējuma programma"
 
-#: dolphinviewcontainer.cpp:925
+#: dolphinviewcontainer.cpp:924
 #, kde-format
 msgctxt "@info:status"
 msgid "Invalid protocol '%1'"
 msgstr "Nederīgs protokols „%1“"
 
-#: dolphinviewcontainer.cpp:927
+#: dolphinviewcontainer.cpp:926
 #, kde-format
 msgctxt "@info:status"
 msgid "Invalid protocol"
 msgstr "Nederīgs protokols"
 
-#: dolphinviewcontainer.cpp:1030
+#: dolphinviewcontainer.cpp:1029
 #, kde-format
 msgctxt "@info"
 msgid "Authorization required to enter this folder."
 msgstr "Lai piekļūtu šai mapei, ir jāautorizējas."
 
-#: dolphinviewcontainer.cpp:1035
+#: dolphinviewcontainer.cpp:1034
 #, kde-format
 msgctxt "@action"
 msgid "Create missing folder"
 msgstr "Izveidot trūkstošo mapi"
 
-#: dolphinviewcontainer.cpp:1052
+#: dolphinviewcontainer.cpp:1051
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Create the folder at this path and open it"
 msgstr "Izveidot un atvērt mapi šajā ceļā"
 
-#: dolphinviewcontainer.cpp:1055
+#: dolphinviewcontainer.cpp:1054
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "You do not have permission to create the folder"
 msgstr "Jums nav atļaujas izveidot mapi"
 
-#: dolphinviewcontainer.cpp:1099 dolphinviewcontainer.cpp:1102
+#: dolphinviewcontainer.cpp:1098 dolphinviewcontainer.cpp:1101
 #, kde-kuit-format
 msgid ""
 "Current location changed, <filename>%1</filename> is no longer accessible."
@@ -5957,7 +5957,7 @@ msgid "Open files and folders:"
 msgstr "Atvērt datnes un mapes:"
 
 #: settings/viewmodes/viewsettingstab.cpp:278
-#: statusbar/dolphinstatusbar.cpp:402
+#: statusbar/dolphinstatusbar.cpp:415
 #, kde-format
 msgctxt "@info:tooltip"
 msgid "Size: 1 pixel"
@@ -6178,35 +6178,35 @@ msgctxt "@action:button"
 msgid "Install Filelight…"
 msgstr "Instalēt „Filelight“…"
 
-#: statusbar/dolphinstatusbar.cpp:61
+#: statusbar/dolphinstatusbar.cpp:68
 #, kde-format
 msgctxt "Used as a noun, i.e. 'Here is the zoom level:'"
 msgid "Zoom:"
 msgstr "Tālummaiņa:"
 
-#: statusbar/dolphinstatusbar.cpp:65
+#: statusbar/dolphinstatusbar.cpp:72
 #, kde-format
 msgid "Zoom"
 msgstr "Tālummaiņa"
 
-#: statusbar/dolphinstatusbar.cpp:66
+#: statusbar/dolphinstatusbar.cpp:73
 #, kde-format
 msgctxt "Description for zoom-slider (accessibility)"
 msgid "Sets the size of the file icons."
 msgstr "Iestata datņu ikonu izmēru."
 
-#: statusbar/dolphinstatusbar.cpp:87
+#: statusbar/dolphinstatusbar.cpp:94
 #, kde-format
 msgid "Stop"
 msgstr "Apturēt"
 
-#: statusbar/dolphinstatusbar.cpp:89
+#: statusbar/dolphinstatusbar.cpp:96
 #, kde-format
 msgctxt "@tooltip"
 msgid "Stop loading"
 msgstr "Apturēt ielādi"
 
-#: statusbar/dolphinstatusbar.cpp:143
+#: statusbar/dolphinstatusbar.cpp:155
 #, kde-kuit-format
 msgctxt "@info:whatsthis Statusbar"
 msgid ""
@@ -6226,7 +6226,7 @@ msgstr ""
 "ikonu izmēru.</item><item><emphasis>Vietas informācija</emphasis> par "
 "pašreizējo krātuves ierīci.</item></list></para>"
 
-#: statusbar/dolphinstatusbar.cpp:350
+#: statusbar/dolphinstatusbar.cpp:347
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Show Zoom Slider"
@@ -6303,7 +6303,7 @@ msgstr "Noklusētais"
 msgid "Reload"
 msgstr "Pārlādēt"
 
-#: views/dolphinview.cpp:712
+#: views/dolphinview.cpp:731
 #, kde-format
 msgctxt "@info:status"
 msgid "1 folder selected"
@@ -6312,7 +6312,7 @@ msgstr[0] "Izvēlēta %1 mape"
 msgstr[1] "Izvēlētas %1 mapes"
 msgstr[2] "Izvēlētas %1 mapes"
 
-#: views/dolphinview.cpp:713
+#: views/dolphinview.cpp:732
 #, kde-format
 msgctxt "@info:status"
 msgid "1 file selected"
@@ -6321,7 +6321,7 @@ msgstr[0] "Izvēlēta %1 datne"
 msgstr[1] "Izvēlētas %1 datnes"
 msgstr[2] "Izvēlētas %1 datnes"
 
-#: views/dolphinview.cpp:715
+#: views/dolphinview.cpp:734
 #, kde-format
 msgctxt "@info:status"
 msgid "1 folder"
@@ -6330,7 +6330,7 @@ msgstr[0] "%1 mape"
 msgstr[1] "%1 mapes"
 msgstr[2] "%1 mapju"
 
-#: views/dolphinview.cpp:716
+#: views/dolphinview.cpp:735
 #, kde-format
 msgctxt "@info:status"
 msgid "1 file"
@@ -6339,31 +6339,31 @@ msgstr[0] "%1 datne"
 msgstr[1] "%1 datnes"
 msgstr[2] "%1 datņu"
 
-#: views/dolphinview.cpp:720
+#: views/dolphinview.cpp:739
 #, kde-format
 msgctxt "@info:status folders, files (size)"
 msgid "%1, %2 (%3)"
 msgstr "%1, %2 (%3)"
 
-#: views/dolphinview.cpp:722
+#: views/dolphinview.cpp:741
 #, kde-format
 msgctxt "@info:status files (size)"
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
-#: views/dolphinview.cpp:726
+#: views/dolphinview.cpp:745
 #, kde-format
 msgctxt "@info:status"
 msgid "0 folders, 0 files"
 msgstr "0 mapju, 0 datņu"
 
-#: views/dolphinview.cpp:968 views/dolphinview.cpp:977
+#: views/dolphinview.cpp:987 views/dolphinview.cpp:996
 #, kde-format
 msgctxt "<filename> copy"
 msgid "%1 copy"
 msgstr "%1 kopija"
 
-#: views/dolphinview.cpp:1170
+#: views/dolphinview.cpp:1189
 #, kde-format
 msgid "Are you sure you want to open 1 item?"
 msgid_plural "Are you sure you want to open %1 items?"
@@ -6371,7 +6371,7 @@ msgstr[0] "Vai tiešām vēlaties atvērt %1 vienumu?"
 msgstr[1] "Vai tiešām vēlaties atvērt %1 vienumus?"
 msgstr[2] "Vai tiešām vēlaties atvērt %1 vienumu?"
 
-#: views/dolphinview.cpp:1175
+#: views/dolphinview.cpp:1194
 #, kde-format
 msgctxt "@action:button"
 msgid "Open %1 Item"
@@ -6380,43 +6380,43 @@ msgstr[0] "Atvērt %1 vienumu"
 msgstr[1] "Atvērt %1 vienumus"
 msgstr[2] "Atvērt %1 vienumu"
 
-#: views/dolphinview.cpp:1308
+#: views/dolphinview.cpp:1327
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Side Padding"
 msgstr "Sānu atstarpes"
 
-#: views/dolphinview.cpp:1312
+#: views/dolphinview.cpp:1331
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Automatic Column Widths"
 msgstr "Automātisks kolonnu platums"
 
-#: views/dolphinview.cpp:1317
+#: views/dolphinview.cpp:1336
 #, kde-format
 msgctxt "@action:inmenu"
 msgid "Custom Column Widths"
 msgstr "Pielāgots kolonnu platums"
 
-#: views/dolphinview.cpp:2047
+#: views/dolphinview.cpp:2066
 #, kde-format
 msgctxt "@info:status"
 msgid "Trash operation completed."
 msgstr "Atkritnes darbība ir pabeigta."
 
-#: views/dolphinview.cpp:2057
+#: views/dolphinview.cpp:2076
 #, kde-format
 msgctxt "@info:status"
 msgid "Delete operation completed."
 msgstr "Dzēšana ir pabeigta."
 
-#: views/dolphinview.cpp:2225
+#: views/dolphinview.cpp:2244
 #, kde-format
 msgctxt "@action:button"
 msgid "Rename and Hide"
 msgstr "Pārdēvēt un paslēpt"
 
-#: views/dolphinview.cpp:2229
+#: views/dolphinview.cpp:2248
 #, kde-format
 msgid ""
 "Adding a dot to the beginning of this file's name will hide it from view.\n"
@@ -6425,7 +6425,7 @@ msgstr ""
 "Punkta pievienošana datnes nosaukuma sākumam to padarīs neredzamu.\n"
 "Vai tiešām vēlaties datni pārdēvēt?"
 
-#: views/dolphinview.cpp:2231
+#: views/dolphinview.cpp:2250
 #, kde-format
 msgid ""
 "Adding a dot to the beginning of this folder's name will hide it from view.\n"
@@ -6434,23 +6434,23 @@ msgstr ""
 "Punkta pievienošana mapes nosaukuma sākumam to padarīs neredzamu.\n"
 "Vai tiešām vēlaties mapi pārdēvēt?"
 
-#: views/dolphinview.cpp:2233
+#: views/dolphinview.cpp:2252
 #, kde-format
 msgid "Hide this File?"
 msgstr "Slēpt šo datni?"
 
-#: views/dolphinview.cpp:2233
+#: views/dolphinview.cpp:2252
 #, kde-format
 msgid "Hide this Folder?"
 msgstr "Slēpt šo mapi?"
 
-#: views/dolphinview.cpp:2254
+#: views/dolphinview.cpp:2273
 #, kde-format
 msgctxt "@action:button"
 msgid "Rename"
 msgstr "Pārdēvēt"
 
-#: views/dolphinview.cpp:2264
+#: views/dolphinview.cpp:2283
 #, kde-format
 msgid ""
 "This will make the file type unknown.\n"
@@ -6462,7 +6462,7 @@ msgstr ""
 "Datnes saturs nemainīsies, bet programmas to var vairs neatpazīt.\n"
 "Vai tik un tā vēlaties to pārdēvēt?"
 
-#: views/dolphinview.cpp:2268
+#: views/dolphinview.cpp:2287
 #, kde-format
 msgid ""
 "This will change the file type from \"%1\" to \"%2\".\n"
@@ -6474,101 +6474,101 @@ msgstr ""
 "Datnes saturs nemainīsies, bet programmas to var vairs neatpazīt.\n"
 "Vai tik un tā vēlaties to pārdēvēt?"
 
-#: views/dolphinview.cpp:2274
+#: views/dolphinview.cpp:2293
 #, kde-format
 msgctxt "@title:window"
 msgid "Change File Type"
 msgstr "Datnes tipa maiņa"
 
-#: views/dolphinview.cpp:2318
+#: views/dolphinview.cpp:2337
 #, kde-format
 msgctxt "@info:status"
 msgid "The location is empty."
 msgstr "Atrašanās vieta ir tukša."
 
-#: views/dolphinview.cpp:2320
+#: views/dolphinview.cpp:2339
 #, kde-format
 msgctxt "@info:status"
 msgid "The location '%1' is invalid."
 msgstr "Atrašanās vieta „%1“ nav derīga."
 
-#: views/dolphinview.cpp:2701
+#: views/dolphinview.cpp:2720
 #, kde-format
 msgid "Loading…"
 msgstr "Ielādē…"
 
-#: views/dolphinview.cpp:2730
+#: views/dolphinview.cpp:2749
 #, kde-format
 msgid "Loading canceled"
 msgstr "Ielāde atcelta"
 
-#: views/dolphinview.cpp:2732
+#: views/dolphinview.cpp:2751
 #, kde-format
 msgid "No items matching the filter"
 msgstr "Nav filtram atbilstošu vienumu"
 
-#: views/dolphinview.cpp:2734
+#: views/dolphinview.cpp:2753
 #, kde-format
 msgid "No items matching the search"
 msgstr "Nav meklētajam atbilstošu vienumu"
 
-#: views/dolphinview.cpp:2736
+#: views/dolphinview.cpp:2755
 #, kde-format
 msgid "Trash is empty"
 msgstr "Atkritne ir tukša"
 
-#: views/dolphinview.cpp:2739
+#: views/dolphinview.cpp:2758
 #, kde-format
 msgid "No tags"
 msgstr "Nav birku"
 
-#: views/dolphinview.cpp:2742
+#: views/dolphinview.cpp:2761
 #, kde-format
 msgid "No files tagged with \"%1\""
 msgstr "Nav datņu ar birku „%1“"
 
-#: views/dolphinview.cpp:2746
+#: views/dolphinview.cpp:2765
 #, kde-format
 msgid "No recently used items"
 msgstr "Nav nesen lietoto vienumu"
 
-#: views/dolphinview.cpp:2748
+#: views/dolphinview.cpp:2767
 #, kde-format
 msgid "No shared folders found"
 msgstr "Nav atrastu kopīgotu mapju"
 
-#: views/dolphinview.cpp:2750
+#: views/dolphinview.cpp:2769
 #, kde-format
 msgid "No relevant network resources found"
 msgstr "Nav atbilstošu tīkla resursu"
 
-#: views/dolphinview.cpp:2752
+#: views/dolphinview.cpp:2771
 #, kde-format
 msgid "No MTP-compatible devices found"
 msgstr "Nav MTP savietojamu iekārtu"
 
-#: views/dolphinview.cpp:2754
+#: views/dolphinview.cpp:2773
 #, kde-format
 msgid "No Apple devices found"
 msgstr "Nav atrastu „Apple“ ierīču"
 
-#: views/dolphinview.cpp:2757
+#: views/dolphinview.cpp:2776
 #, fuzzy, kde-format
 #| msgid "No Apple devices found"
 msgid "No KDE Connect devices found"
 msgstr "Nav atrastu „Apple“ ierīču"
 
-#: views/dolphinview.cpp:2759
+#: views/dolphinview.cpp:2778
 #, kde-format
 msgid "No storage found on this device"
 msgstr ""
 
-#: views/dolphinview.cpp:2762
+#: views/dolphinview.cpp:2781
 #, kde-format
 msgid "No Bluetooth devices found"
 msgstr "Nav „Bluetooth“ iekārtu"
 
-#: views/dolphinview.cpp:2764
+#: views/dolphinview.cpp:2783
 #, kde-format
 msgid "Folder is empty"
 msgstr "Mape ir tukša"
