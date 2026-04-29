@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-28 00:48+0000\n"
+"POT-Creation-Date: 2026-04-29 00:49+0000\n"
 "PO-Revision-Date: 2025-11-10 22:41+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -3933,62 +3933,62 @@ msgctxt "@info:status"
 msgid "Installing KFind"
 msgstr "KFind telepítése"
 
-#: search/selectors/dateselector.cpp:54
+#: search/selectors/dateselector.cpp:59
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Any Date"
 msgstr "Bármely dátum"
 
-#: search/selectors/filetypeselector.cpp:23
+#: search/selectors/filetypeselector.cpp:25
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Any Type"
 msgstr "Bármely típus"
 
-#: search/selectors/minimumratingselector.cpp:20
+#: search/selectors/minimumratingselector.cpp:22
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "Any Rating"
 msgstr "Bármely értékelés"
 
-#: search/selectors/minimumratingselector.cpp:21
+#: search/selectors/minimumratingselector.cpp:24
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "1 or more"
 msgstr "Egy vagy több"
 
-#: search/selectors/minimumratingselector.cpp:22
+#: search/selectors/minimumratingselector.cpp:25
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "2 or more"
 msgstr "Kettő vagy több"
 
-#: search/selectors/minimumratingselector.cpp:23
+#: search/selectors/minimumratingselector.cpp:26
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "3 or more"
 msgstr "Három vagy több"
 
-#: search/selectors/minimumratingselector.cpp:24
+#: search/selectors/minimumratingselector.cpp:27
 #, kde-format
 msgctxt "@item:inlistbox"
 msgid "4 or more"
 msgstr "Négy vagy több"
 
-#: search/selectors/minimumratingselector.cpp:25
+#: search/selectors/minimumratingselector.cpp:28
 #, kde-format
 msgctxt "@item:inlistbox 5 star rating, has a star icon in front"
 msgid "5"
 msgstr "5"
 
-#: search/selectors/tagsselector.cpp:179
+#: search/selectors/tagsselector.cpp:191
 #, kde-format
 msgctxt ""
 "list separator for file tags e.g. all images tagged 'family & party & 2025'"
 msgid " && "
 msgstr " és "
 
-#: search/selectors/tagsselector.cpp:182
+#: search/selectors/tagsselector.cpp:194
 #, kde-format
 msgctxt "@action:button Required tags for search results: None"
 msgid "None"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dolphin\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-04-28 00:48+0000\n"
+"POT-Creation-Date: 2026-04-29 00:49+0000\n"
 "PO-Revision-Date: 2015-01-09 11:56+0100\n"
 "Last-Translator: Samir Ribic <samir.ribic@etf.unsa.ba>\n"
 "Language-Team: bosanski <bs@li.org>\n"
@@ -3829,7 +3829,7 @@ msgctxt "@info:status"
 msgid "Installing KFind"
 msgstr ""
 
-#: search/selectors/dateselector.cpp:54
+#: search/selectors/dateselector.cpp:59
 #, fuzzy, kde-format
 #| msgctxt "@option:option"
 #| msgid "Any Rating"
@@ -3837,7 +3837,7 @@ msgctxt "@item:inlistbox"
 msgid "Any Date"
 msgstr "Svaki rang"
 
-#: search/selectors/filetypeselector.cpp:23
+#: search/selectors/filetypeselector.cpp:25
 #, fuzzy, kde-format
 #| msgctxt "@label"
 #| msgid "Type"
@@ -3845,7 +3845,7 @@ msgctxt "@item:inlistbox"
 msgid "Any Type"
 msgstr "Tip"
 
-#: search/selectors/minimumratingselector.cpp:20
+#: search/selectors/minimumratingselector.cpp:22
 #, fuzzy, kde-format
 #| msgctxt "@option:option"
 #| msgid "Any Rating"
@@ -3853,7 +3853,7 @@ msgctxt "@item:inlistbox"
 msgid "Any Rating"
 msgstr "Svaki rang"
 
-#: search/selectors/minimumratingselector.cpp:21
+#: search/selectors/minimumratingselector.cpp:24
 #, fuzzy, kde-format
 #| msgctxt "@option:option"
 #| msgid "1 or more"
@@ -3861,7 +3861,7 @@ msgctxt "@item:inlistbox"
 msgid "1 or more"
 msgstr "1 ili više"
 
-#: search/selectors/minimumratingselector.cpp:22
+#: search/selectors/minimumratingselector.cpp:25
 #, fuzzy, kde-format
 #| msgctxt "@option:option"
 #| msgid "2 or more"
@@ -3869,7 +3869,7 @@ msgctxt "@item:inlistbox"
 msgid "2 or more"
 msgstr "2 ili više"
 
-#: search/selectors/minimumratingselector.cpp:23
+#: search/selectors/minimumratingselector.cpp:26
 #, fuzzy, kde-format
 #| msgctxt "@option:option"
 #| msgid "3 or more"
@@ -3877,7 +3877,7 @@ msgctxt "@item:inlistbox"
 msgid "3 or more"
 msgstr "3 ili više"
 
-#: search/selectors/minimumratingselector.cpp:24
+#: search/selectors/minimumratingselector.cpp:27
 #, fuzzy, kde-format
 #| msgctxt "@option:option"
 #| msgid "4 or more"
@@ -3885,7 +3885,7 @@ msgctxt "@item:inlistbox"
 msgid "4 or more"
 msgstr "4 ili više"
 
-#: search/selectors/minimumratingselector.cpp:25
+#: search/selectors/minimumratingselector.cpp:28
 #, fuzzy, kde-format
 #| msgctxt "@item:inlistbox Maximum lines"
 #| msgid "5"
@@ -3893,14 +3893,14 @@ msgctxt "@item:inlistbox 5 star rating, has a star icon in front"
 msgid "5"
 msgstr "5"
 
-#: search/selectors/tagsselector.cpp:179
+#: search/selectors/tagsselector.cpp:191
 #, kde-format
 msgctxt ""
 "list separator for file tags e.g. all images tagged 'family & party & 2025'"
 msgid " && "
 msgstr ""
 
-#: search/selectors/tagsselector.cpp:182
+#: search/selectors/tagsselector.cpp:194
 #, kde-format
 msgctxt "@action:button Required tags for search results: None"
 msgid "None"
