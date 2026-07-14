@@ -28,3 +28,4 @@ apidocs
 doxygen.log
 .directory
 .cmake/
+.ccls-cache
