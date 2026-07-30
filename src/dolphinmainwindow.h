@@ -301,7 +301,7 @@ private Q_SLOTS:
     /** Updates the 'Create New...' sub menu. */
     void updateNewMenu();
 
-    void createDirectory();
+    void createDirectory(const QUrl &parent);
     void createFile();
 
     /** Shows the error message in the status bar of the active view. */
