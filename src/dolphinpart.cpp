@@ -174,7 +174,7 @@ void DolphinPart::createActions()
     QActionGroup *goActionGroup = new QActionGroup(this);
     connect(goActionGroup, &QActionGroup::triggered, this, &DolphinPart::slotGoTriggered);
 
-    createGoAction("go_applications", "start-here-kde", i18nc("@action:inmenu Go", "App&lications"), QStringLiteral("programs:/"), goActionGroup);
+    createGoAction("go_applications", "start-here-sonicde", i18nc("@action:inmenu Go", "App&lications"), QStringLiteral("programs:/"), goActionGroup);
     createGoAction("go_network_folders", "folder-remote", i18nc("@action:inmenu Go", "&Network Folders"), QStringLiteral("remote:/"), goActionGroup);
     createGoAction("go_trash", "user-trash", i18nc("@action:inmenu Go", "Trash"), QStringLiteral("trash:/"), goActionGroup);
     createGoAction("go_autostart",
