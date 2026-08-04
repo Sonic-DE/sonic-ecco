@@ -85,7 +85,7 @@ int main(int argc, char **argv)
      * Of all tested styles that works the best for us
      */
 #if defined(Q_OS_MACOS) || defined(Q_OS_WIN)
-    QApplication::setStyle(QStringLiteral("breeze"));
+    QApplication::setStyle(QStringLiteral("silver"));
 #endif
 #endif
 
