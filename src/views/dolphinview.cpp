@@ -2405,6 +2405,16 @@ void DolphinView::applyViewProperties(const ViewProperties &props)
     }
 
     m_view->endTransaction();
+
+    Q_EMIT viewSettingsChanged(props.isDefaults());
+}
+
+void DolphinView::updateDefaultZoomLevel()
+{
+    ViewModeSettings settings{m_mode};
+    const int userDefaultIconSize = previewsShown() ? settings.previewSize() : settings.iconSize();
+
+    m_defaultZoomLevel = ZoomLevelInfo::zoomLevelForIconSize(QSize(userDefaultIconSize, userDefaultIconSize));
 }
 
 void DolphinView::applyModeToView()
@@ -2751,3 +2761,4 @@ void DolphinView::expandToUrl(const QUrl &directory)
 }
 
 #include "moc_dolphinview.cpp"
+
