@@ -53,7 +53,8 @@ private:
 private:
     QTimer *m_autoActivationTimer;
     int m_autoActivationIndex;
-    int m_tabToBeClosedOnMiddleMouseButtonRelease;
+    int m_tabToBeClosedOnMiddleMouseButtonRelease = -1;
 };
 
 #endif // DOLPHIN_TAB_BAR_H
+
