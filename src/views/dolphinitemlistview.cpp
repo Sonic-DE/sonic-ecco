@@ -39,20 +39,37 @@ void DolphinItemListView::setZoomLevel(int level)
         level = ZoomLevelInfo::maximumLevel();
     }
 
-    if (level == m_zoomLevel) {
+    const bool useGlobalViewProps = GeneralSettings::globalViewProps();
+    ViewModeSettings settings(itemLayout());
+
+    // The size belonging to the requested zoom level must be applied even when the zoom level
+    // itself did not change: m_iconSize/m_previewSize may still be unset, e.g. because this is
+    // the first call for the current view mode. Otherwise the view would keep using a stale size.
+    const int size = ZoomLevelInfo::iconSizeForZoomLevel(level);
+    bool changed = (level != m_zoomLevel);
+
+    if (previewsShown()) {
+        changed = changed || (m_previewSize != size);
+        m_previewSize = size;
+        // Only update the icon size settings if we're using global view props
+        // to prevent inconsistent state on zoom level changes
+        if (useGlobalViewProps) {
+            settings.setPreviewSize(m_previewSize);
+        }
+    } else {
+        // Same as above
+        changed = changed || (m_iconSize != size);
+        m_iconSize = size;
+        if (useGlobalViewProps) {
+            settings.setIconSize(m_iconSize);
+        }
+    }
+
+    if (!changed) {
         return;
     }
 
     m_zoomLevel = level;
-
-    ViewModeSettings settings(itemLayout());
-    if (previewsShown()) {
-        const int previewSize = ZoomLevelInfo::iconSizeForZoomLevel(level);
-        settings.setPreviewSize(previewSize);
-    } else {
-        const int iconSize = ZoomLevelInfo::iconSizeForZoomLevel(level);
-        settings.setIconSize(iconSize);
-    }
 
     updateGridSize();
 }
@@ -169,7 +186,15 @@ void DolphinItemListView::updateGridSize()
     const ViewModeSettings settings(itemLayout());
 
     // Calculate the size of the icon
-    const int iconSize = previewsShown() ? settings.previewSize() : settings.iconSize();
+    // Only use zoom stored in settings if we're using global view props
+    int &cachedSize = previewsShown() ? m_previewSize : m_iconSize;
+    if (cachedSize <= 0) {
+        // setZoomLevel() has not been called yet for this view mode and preview state, so the
+        // per-folder zoom is not known yet. Falling back to the configured size keeps the view
+        // usable: a size of 0 would mean that no icons are rendered at all.
+        cachedSize = previewsShown() ? settings.previewSize() : settings.iconSize();
+    }
+    const int iconSize = useGlobalViewProps ? (previewsShown() ? settings.previewSize() : settings.iconSize()) : cachedSize;
     m_zoomLevel = ZoomLevelInfo::zoomLevelForIconSize(QSize(iconSize, iconSize));
     KItemListStyleOption option = styleOption();
 
@@ -244,3 +269,4 @@ void DolphinItemListView::updateGridSize()
 }
 
 #include "moc_dolphinitemlistview.cpp"
+
