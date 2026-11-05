@@ -491,6 +491,9 @@ target_link_libraries(dolphinstatic
     KF6::DBusAddons
     KF6::Notifications
     KF6::BookmarksWidgets
+    Qt6::Quick
+    Qt6::QuickControls2
+    Qt6::QuickWidgets
 )
 
 if(HAVE_PACKAGEKIT)

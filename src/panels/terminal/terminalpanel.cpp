@@ -13,20 +13,33 @@
 #include <KLocalizedString>
 #include <KMessageWidget>
 #include <KMountPoint>
-#include <KParts/ReadOnlyPart>
-#include <KPluginFactory>
 #include <KProtocolInfo>
 #include <KShell>
-#include <KXMLGUIBuilder>
-#include <KXMLGUIFactory>
-#include <kde_terminal_interface.h>
 
 #include <QAction>
 #include <QDesktopServices>
 #include <QDir>
+#include <QQuickItem>
+#include <QQuickStyle>
+#include <QQuickWidget>
+#include <QQuickWindow>
 #include <QShowEvent>
 #include <QTimer>
 #include <QVBoxLayout>
+
+namespace {
+QString callString(QObject* terminal, const char* method)
+{
+    QString result;
+    QMetaObject::invokeMethod(terminal, method, Q_RETURN_ARG(QString, result));
+    return result;
+}
+
+void sendInputTo(QObject* terminal, const QString& text)
+{
+    QMetaObject::invokeMethod(terminal, "sendInput", Q_ARG(QString, text));
+}
+}
 
 TerminalPanel::TerminalPanel(QWidget *parent)
     : Panel(parent)
@@ -37,7 +50,6 @@ TerminalPanel::TerminalPanel(QWidget *parent)
     , m_terminal(nullptr)
     , m_terminalWidget(nullptr)
     , m_konsolePartMissingMessage(nullptr)
-    , m_konsolePart(nullptr)
     , m_konsolePartCurrentDirectory()
     , m_sendCdToTerminalHistory()
     , m_kiofuseInterface(QStringLiteral("org.kde.KIOFuse"), QStringLiteral("/org/kde/KIOFuse"), QDBusConnection::sessionBus())
@@ -47,15 +59,7 @@ TerminalPanel::TerminalPanel(QWidget *parent)
     m_layout->setContentsMargins(0, 0, 0, 0);
 }
 
-TerminalPanel::~TerminalPanel()
-{
-    if (m_konsolePart) {
-        disconnect(m_konsolePart, &KParts::ReadOnlyPart::destroyed, this, &TerminalPanel::terminalExited);
-        // Delete before QObject child cleanup, while m_konsolePartClientBuilder is still alive.
-        delete m_konsolePart;
-        m_konsolePart = nullptr;
-    }
-}
+TerminalPanel::~TerminalPanel() = default;
 
 void TerminalPanel::goHome()
 {
@@ -65,7 +69,7 @@ void TerminalPanel::goHome()
 bool TerminalPanel::currentWorkingDirectoryIsChildOf(const QString &path) const
 {
     if (m_terminal) {
-        return m_terminal->currentWorkingDirectory().startsWith(path);
+        return callString(m_terminal, "currentWorkingDirectory").startsWith(path);
     }
     return false;
 }
@@ -73,7 +77,11 @@ bool TerminalPanel::currentWorkingDirectoryIsChildOf(const QString &path) const
 void TerminalPanel::terminalExited()
 {
     m_terminal = nullptr;
-    m_konsolePart = nullptr;
+    setFocusProxy(nullptr);
+    m_layout->removeWidget(m_terminalWidget);
+    // It is emitting this.
+    m_terminalWidget->deleteLater();
+    m_terminalWidget = nullptr;
     Q_EMIT hideTerminalPanel();
 }
 
@@ -91,7 +99,7 @@ void TerminalPanel::dockVisibilityChanged()
             m_konsolePartMissingMessage->hide();
         } else if (m_terminal && !hasProgramRunning()) {
             // Make sure that the following "cd /" command will not affect the view.
-            disconnect(m_konsolePart, SIGNAL(currentDirectoryChanged(QString)), this, SLOT(slotKonsolePartCurrentDirectoryChanged(QString)));
+            disconnect(m_terminal, SIGNAL(currentDirectoryChanged(QString)), this, SLOT(slotKonsolePartCurrentDirectoryChanged(QString)));
 
             // Make sure this terminal does not prevent unmounting any removable drives
             changeDir(QUrl::fromLocalFile(QStringLiteral("/")));
@@ -117,27 +125,34 @@ void TerminalPanel::setSwitchTerminalUrlSyncAction(QAction *urlToggle)
 
 QString TerminalPanel::runningProgramName() const
 {
-    return m_terminal ? m_terminal->foregroundProcessName() : QString();
+    return m_terminal ? callString(m_terminal, "foregroundProcessName") : QString();
 }
 
 KActionCollection *TerminalPanel::actionCollection()
 {
-    // m_terminal is the only reference reset to nullptr in case the terminal is
-    // closed again
-    if (m_terminal && m_konsolePart && m_terminalWidget) {
-        const auto guiClients = m_konsolePart->childClients();
-        for (auto *client : guiClients) {
-            if (client->actionCollection()->associatedWidgets().contains(m_terminalWidget)) {
-                return client->actionCollection();
-            }
-        }
+    if (!m_terminal) {
+        return nullptr;
     }
-    return nullptr;
+    QObject* collection = nullptr;
+    QMetaObject::invokeMethod(m_terminal, "sessionActionCollection", Q_RETURN_ARG(QObject*, collection));
+    return qobject_cast<KActionCollection*>(collection);
+}
+
+void TerminalPanel::saveShortcuts()
+{
+    if (m_terminal) {
+        QMetaObject::invokeMethod(m_terminal, "saveShortcuts");
+    }
 }
 
 bool TerminalPanel::hasProgramRunning() const
 {
-    return m_terminal && (m_terminal->foregroundProcessId() != -1);
+    if (!m_terminal) {
+        return false;
+    }
+    int processId = -1;
+    QMetaObject::invokeMethod(m_terminal, "foregroundProcessId", Q_RETURN_ARG(int, processId));
+    return processId != -1;
 }
 
 bool TerminalPanel::urlChanged()
@@ -157,47 +172,42 @@ bool TerminalPanel::urlChanged()
 
 void TerminalPanel::showEvent(QShowEvent *event)
 {
-    if (event->spontaneous()) {
+    // A QQuickWidget that uses the GPU makes Qt recreate the window, which shows this again.
+    if (event->spontaneous() || m_creatingTerminal) {
         Panel::showEvent(event);
         return;
     }
 
     if (!m_terminal) {
+        m_creatingTerminal = true;
         m_clearTerminal = true;
-        KPluginFactory *factory = KPluginFactory::loadFactory(KPluginMetaData(QStringLiteral("kf6/parts/konsolepart"))).plugin;
-        m_konsolePart = factory ? (factory->create<KParts::ReadOnlyPart>(this)) : nullptr;
-        if (m_konsolePart) {
-            connect(m_konsolePart, &KParts::ReadOnlyPart::destroyed, this, &TerminalPanel::terminalExited);
-            m_terminalWidget = m_konsolePart->widget();
+        // Qt Quick settings must precede the first QML.
+        if (QQuickStyle::name().isEmpty()) {
+            QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
+        }
+        QQuickWindow::setTextRenderType(QQuickWindow::NativeTextRendering);
+        // Drawn with the window's other widgets: on the GPU, every Ecco window would pay for it.
+        QQuickWindow::setGraphicsApi(QSGRendererInterface::Software);
+        auto* terminalWidget = new QQuickWidget(this);
+        terminalWidget->setResizeMode(QQuickWidget::SizeRootObjectToView);
+        terminalWidget->setFocusPolicy(Qt::StrongFocus);
+        terminalWidget->loadFromModule("org.sonicde.terminal.app", "TerminalArea");
+        if (terminalWidget->status() == QQuickWidget::Ready && terminalWidget->rootObject()) {
+            m_terminalWidget = terminalWidget;
+            m_terminal = terminalWidget->rootObject();
+            connect(m_terminal, SIGNAL(finished()), this, SLOT(terminalExited()));
             setFocusProxy(m_terminalWidget);
             m_layout->addWidget(m_terminalWidget);
             if (m_konsolePartMissingMessage) {
                 m_layout->removeWidget(m_konsolePartMissingMessage);
             }
-            m_terminal = qobject_cast<TerminalInterface *>(m_konsolePart);
-
-            // needed to collect the correct KonsolePart actionCollection
-            // namely the one of the single inner terminal and not the outer KonsolePart
-            if (!m_konsolePart->factory() && m_terminalWidget) {
-                if (!m_konsolePart->clientBuilder()) {
-                    m_konsolePartClientBuilder = std::make_unique<KXMLGUIBuilder>(m_terminalWidget);
-                    m_konsolePart->setClientBuilder(m_konsolePartClientBuilder.get());
-                }
-
-                auto factory = new KXMLGUIFactory(m_konsolePart->clientBuilder(), this);
-                factory->addClient(m_konsolePart);
-
-                // Prevents the KXMLGui warning about removing the client
-                connect(m_terminalWidget, &QObject::destroyed, this, [factory, this] {
-                    factory->removeClient(m_konsolePart);
-                });
-            }
 
             const QList<QAction *> additional = {m_switchTerminalUrlSyncAction};
 
-            QMetaObject::invokeMethod(m_konsolePart, "setContextMenuAdditionalActions", Q_ARG(QList<QAction *>, additional));
+            QMetaObject::invokeMethod(m_terminal, "setContextMenuAdditionalActions", Q_ARG(QList<QAction*>, additional));
 
         } else {
+            delete terminalWidget;
             if (!m_konsolePartMissingMessage) {
                 const auto konsoleInstallUrl = QUrl("appstream://org.kde.konsole.desktop");
                 const auto konsoleNotInstalledText = i18n(
@@ -220,14 +230,15 @@ void TerminalPanel::showEvent(QShowEvent *event)
 
             m_konsolePartMissingMessage->animatedShow();
         }
+        m_creatingTerminal = false;
     }
     if (m_terminal) {
-        m_terminal->showShellInDir(url().toLocalFile());
+        QMetaObject::invokeMethod(m_terminal, "showShellInDir", Q_ARG(QString, url().toLocalFile()));
         if (!hasProgramRunning()) {
             changeDir(url());
         }
         m_terminalWidget->setFocus();
-        connect(m_konsolePart, SIGNAL(currentDirectoryChanged(QString)), this, SLOT(slotKonsolePartCurrentDirectoryChanged(QString)));
+        connect(m_terminal, SIGNAL(currentDirectoryChanged(QString)), this, SLOT(slotKonsolePartCurrentDirectoryChanged(QString)));
     }
 
     Panel::showEvent(event);
@@ -280,7 +291,7 @@ void TerminalPanel::sendCdToTerminal(const QString &dir, HistoryPolicy addToHist
     // Send prior Ctrl-E, Ctrl-U to ensure the line is empty. This is
     // mandatory, otherwise sending a 'cd x\n' to a prompt with 'rm -rf *'
     // would result in data loss.
-    m_terminal->sendInput(QStringLiteral("\x05\x15"));
+    sendInputTo(m_terminal, QStringLiteral("\x05\x15"));
 
     // We want to ignore the currentDirectoryChanged(QString) signal, which we will receive after
     // the directory change, because this directory change is not caused by a "cd" command that the
@@ -289,10 +300,10 @@ void TerminalPanel::sendCdToTerminal(const QString &dir, HistoryPolicy addToHist
     if (addToHistory == HistoryPolicy::AddToHistory)
         m_sendCdToTerminalHistory.enqueue(QDir(dir).canonicalPath());
 
-    m_terminal->sendInput(" cd " + KShell::quoteArg(dir) + '\r');
+    sendInputTo(m_terminal, " cd " + KShell::quoteArg(dir) + '\r');
 
     if (m_clearTerminal) {
-        m_terminal->sendInput(QStringLiteral(" clear\r"));
+        sendInputTo(m_terminal, QStringLiteral(" clear\r"));
         m_clearTerminal = false;
     }
 }

@@ -280,6 +280,12 @@ DolphinMainWindow::~DolphinMainWindow()
                &DolphinDockWidget::visibilityChanged,
                this,
                &DolphinMainWindow::slotPlacesPanelVisibilityChanged);
+    if (m_terminalPanel) {
+        disconnect(static_cast<DolphinDockWidget*>(m_terminalPanel->parent()),
+            &DolphinDockWidget::visibilityChanged,
+            this,
+            &DolphinMainWindow::slotTerminalPanelVisibilityChanged);
+    }
 }
 
 QVector<DolphinViewContainer *> DolphinMainWindow::viewContainers() const
@@ -1765,6 +1771,9 @@ void DolphinMainWindow::slotKeyBindings()
         }
     }
     dialog.configure();
+    if (m_terminalPanel) {
+        m_terminalPanel->saveShortcuts();
+    }
 }
 
 void DolphinMainWindow::setViewsToHomeIfMountPathOpen(const QString &mountPath)

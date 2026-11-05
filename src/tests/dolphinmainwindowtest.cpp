@@ -17,6 +17,7 @@
 #include "kitemviews/kitemlistcontroller.h"
 #include "kitemviews/kitemlistselectionmanager.h"
 #include "kitemviews/kitemlistwidget.h"
+#include "panels/terminal/terminalpanel.h"
 #include "settings/viewmodes/viewmodesettings.h"
 #include "testdir.h"
 #include "views/dolphinitemlistview.h"
@@ -34,6 +35,8 @@
 #include <QFileSystemWatcher>
 #include <QKeySequence>
 #include <QPixmap>
+#include <QQuickItem>
+#include <QQuickWidget>
 #include <QScopeGuard>
 #include <QScopedPointer>
 #include <QSignalSpy>
@@ -48,6 +51,9 @@
 class DolphinMainWindowTest : public QObject
 {
     Q_OBJECT
+
+protected:
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
 private Q_SLOTS:
     void initTestCase();
@@ -72,6 +78,8 @@ private Q_SLOTS:
     void testFocusPlacesPanel();
     void testFocusOtherView();
     void testPlacesPanelWidthResistance();
+    void testTerminalPanel();
+    void testWindowGoesWithTerminalPanelOpen();
     void testGoActions();
     void testOpenFiles();
     void testAccessibilityTree();
@@ -107,6 +115,16 @@ void DolphinMainWindowTest::initTestCase()
 void DolphinMainWindowTest::init()
 {
     m_mainWindow.reset(new DolphinMainWindow());
+    m_mainWindow->installEventFilter(this);
+}
+
+bool DolphinMainWindowTest::eventFilter(QObject* watched, QEvent* event)
+{
+    // As a window manager does; a test's X server may have none.
+    if (watched == m_mainWindow.data() && event->type() == QEvent::Show) {
+        m_mainWindow->QWidget::activateWindow();
+    }
+    return QObject::eventFilter(watched, event);
 }
 
 /**
@@ -600,6 +618,7 @@ void DolphinMainWindowTest::testCreateFileAction()
     QVERIFY(QTest::qWaitForWindowExposed(m_mainWindow.data()));
 #endif
     QVERIFY(m_mainWindow->isVisible());
+    QVERIFY(QTest::qWaitForWindowActive(m_mainWindow.data()));
 
     QCOMPARE(m_mainWindow->m_activeViewContainer->view()->items().count(), 0);
 
@@ -839,6 +858,85 @@ void DolphinMainWindowTest::testFocusOtherView()
  * The places panel will resize itself if any of the other widgets requires too much horizontal space
  * but a user never wants the size of the places panel to change unless they resized it themselves explicitly.
  */
+/**
+ * The panel's terminal comes from Sonic Terminal's QML module, found at run time. Ending its shell
+ * closes the panel, and opening the panel again starts a new one.
+ */
+void DolphinMainWindowTest::testTerminalPanel()
+{
+    m_mainWindow->openDirectories({QUrl::fromLocalFile(QDir::homePath())}, false);
+    m_mainWindow->show();
+    QVERIFY(QTest::qWaitForWindowExposed(m_mainWindow.data()));
+
+    auto* panel = m_mainWindow->findChild<TerminalPanel*>();
+    QVERIFY(panel);
+    QAction* showPanel = m_mainWindow->actionCollection()->action(QStringLiteral("show_terminal_panel"));
+    QVERIFY(showPanel);
+    const WId windowId = m_mainWindow->winId();
+    if (!panel->isVisible()) {
+        showPanel->trigger();
+    }
+    QTRY_VERIFY(panel->isVisible());
+    // A new native window would flicker.
+    QCOMPARE(m_mainWindow->winId(), windowId);
+    if (!panel->actionCollection()) {
+        QSKIP("org.sonicde.terminal.app isn't on the QML import path");
+    }
+    QCOMPARE(panel->findChildren<QQuickWidget*>().size(), 1);
+    auto* terminal = panel->findChild<QQuickWidget*>();
+    QTRY_VERIFY(terminal->isVisible());
+    // Drawn like the window's other widgets: no surface for the GPU.
+    QCOMPARE(m_mainWindow->windowHandle()->surfaceType(), QSurface::RasterSurface);
+    QTRY_VERIFY_WITH_TIMEOUT(panel->currentWorkingDirectoryIsChildOf(QDir(QDir::homePath()).canonicalPath()), 10000);
+    // The panel's own cd and clear may still be running.
+    QTRY_VERIFY_WITH_TIMEOUT(!panel->hasProgramRunning(), 10000);
+
+    QSignalSpy hidden(panel, &TerminalPanel::hideTerminalPanel);
+    QVERIFY(QMetaObject::invokeMethod(terminal->rootObject(), "sendInput", Q_ARG(QString, QStringLiteral("exit\n"))));
+    QTRY_COMPARE_WITH_TIMEOUT(hidden.count(), 1, 10000);
+    QVERIFY(!panel->actionCollection());
+    QTRY_VERIFY(!panel->isVisible());
+
+    showPanel->trigger();
+    QTRY_VERIFY(panel->isVisible());
+    // Its layout shows it later.
+    const auto newTerminalShown = [panel, terminal] {
+        const auto terminals = panel->findChildren<QQuickWidget*>();
+        return std::any_of(terminals.cbegin(), terminals.cend(), [terminal](const QQuickWidget* widget) {
+            return widget != terminal && widget->isVisible();
+        });
+    };
+    QTRY_VERIFY(newTerminalShown());
+    QVERIFY(panel->actionCollection());
+
+    // Ended too: closing the window while the new shell starts would ask whether to quit.
+    const auto terminals = panel->findChildren<QQuickWidget*>();
+    const auto reopened = std::find_if(terminals.cbegin(), terminals.cend(), [terminal](const QQuickWidget* widget) {
+        return widget != terminal;
+    });
+    QVERIFY(reopened != terminals.cend());
+    QVERIFY(QMetaObject::invokeMethod((*reopened)->rootObject(), "sendInput", Q_ARG(QString, QStringLiteral("exit\n"))));
+    QTRY_COMPARE_WITH_TIMEOUT(hidden.count(), 2, 10000);
+}
+
+void DolphinMainWindowTest::testWindowGoesWithTerminalPanelOpen()
+{
+    m_mainWindow->openDirectories({QUrl::fromLocalFile(QDir::homePath())}, false);
+    m_mainWindow->show();
+    QVERIFY(QTest::qWaitForWindowExposed(m_mainWindow.data()));
+    auto* panel = m_mainWindow->findChild<TerminalPanel*>();
+    QVERIFY(panel);
+    if (!panel->isVisible()) {
+        m_mainWindow->actionCollection()->action(QStringLiteral("show_terminal_panel"))->trigger();
+    }
+    QTRY_VERIFY(panel->isVisible());
+    if (!panel->actionCollection()) {
+        QSKIP("org.sonicde.terminal.app isn't on the QML import path");
+    }
+    QTRY_VERIFY_WITH_TIMEOUT(!panel->hasProgramRunning(), 10000);
+    m_mainWindow.reset();
+}
+
 void DolphinMainWindowTest::testPlacesPanelWidthResistance()
 {
     m_mainWindow->openDirectories({QUrl::fromLocalFile(QDir::homePath())}, false);

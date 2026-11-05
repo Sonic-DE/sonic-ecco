@@ -12,24 +12,16 @@
 
 #include <QQueue>
 
-#include <memory>
-
-class KXMLGUIBuilder;
-class TerminalInterface;
 class KActionCollection;
 class KMessageWidget;
+class QQuickWidget;
 class QVBoxLayout;
-class QWidget;
 
 namespace KIO
 {
 class StatJob;
 }
 
-namespace KParts
-{
-class ReadOnlyPart;
-}
 class KJob;
 /**
  * @brief Shows the terminal which is synchronized with the URL of the
@@ -54,6 +46,10 @@ public:
     bool hasProgramRunning() const;
     QString runningProgramName() const;
     KActionCollection *actionCollection();
+    /**
+     * @brief Keeps what the shortcuts dialog changed in actionCollection().
+     */
+    void saveShortcuts();
 
 public Q_SLOTS:
     void terminalExited();
@@ -88,16 +84,17 @@ private:
 
 private:
     bool m_clearTerminal;
+    bool m_creatingTerminal = false;
     bool m_syncUrl;
     QUrl m_url;
     KIO::StatJob *m_mostLocalUrlJob;
 
     QVBoxLayout *m_layout;
-    TerminalInterface *m_terminal;
-    QWidget *m_terminalWidget;
+    // The root of org.sonicde.terminal.app's TerminalArea, used by name: Ecco doesn't link
+    // the terminal's libraries.
+    QObject* m_terminal;
+    QQuickWidget* m_terminalWidget;
     KMessageWidget *m_konsolePartMissingMessage;
-    KParts::ReadOnlyPart *m_konsolePart;
-    std::unique_ptr<KXMLGUIBuilder> m_konsolePartClientBuilder;
     QString m_konsolePartCurrentDirectory;
     QQueue<QString> m_sendCdToTerminalHistory;
     org::kde::KIOFuse::VFS m_kiofuseInterface;
