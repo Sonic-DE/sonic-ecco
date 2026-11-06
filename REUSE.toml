@@ -62,12 +62,6 @@ precedence = "aggregate"
 SPDX-FileCopyrightText = "KDE Contributors"
 SPDX-License-Identifier = "CC0-1.0"
 
-# Test documentation — MIT licensed per original authors.
-[[annotations]]
-path = "appiumtests/Readme.md"
-precedence = "aggregate"
-SPDX-FileCopyrightText = ["2024 Méven Car <meven.car@kdemail.net>", "2026 Areeb Faisal <areebfaisal49@gmail.com>"]
-SPDX-License-Identifier = "MIT"
 
 # Developer-infrastructure and build configuration files without usable comment syntax.
 # These contain no creative expression and are dedicated to the public domain.
