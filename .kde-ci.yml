@@ -37,11 +37,6 @@ Dependencies:
    'require':
     'network/kio-extras': '@same'
 
-RuntimeDependencies:
- - 'on': ['Linux']
-   'require':
-    'sdk/selenium-webdriver-at-spi': '@latest-kf6'
-
 Options:
  use-ccache: True
  require-passing-tests-on: ['Linux/Qt6', 'FreeBSD/Qt6']
