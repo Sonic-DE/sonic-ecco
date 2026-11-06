@@ -15,7 +15,7 @@
 TrashSettingsPage::TrashSettingsPage(QWidget *parent)
     : SettingsPageBase(parent)
 {
-    m_kcm = KCModuleLoader::loadModule(KPluginMetaData(QStringLiteral("kcm_trash")), this);
+    m_kcm = KCModuleLoader::loadModule(KPluginMetaData(QStringLiteral("plasma/kcms/systemsettings_qwidgets/kcm_trash")), this);
 
     loadSettings();
 
