@@ -2,10 +2,11 @@
 
 Sonic Ecco is SonicDE's file manager, letting you browse, organize and manage files on your drives, USB sticks and more.
 
-## Unreleased
+## 26.08.3 (2026-11-10)
 
-- Behind the scenes: the Trash settings page follows the Trash module to its new location.
 - The terminal panel now uses Sonic Terminal's QML module; it looks and works as before.
+- Behind the scenes: the Trash settings page follows the Trash module to its new location, and automated tests
+  that need Wayland were removed.
 
 ## 26.08.2 (2026-10-20)
 
